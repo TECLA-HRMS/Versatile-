@@ -26,6 +26,23 @@ class AdminAuthController extends Controller
 
             // Check if user is admin
             if (Auth::user()->is_admin) {
+                
+                // Check maintenance mode for non-Admin roles (e.g. Editor)
+                try {
+                    $maintenanceMode = \App\Models\Setting::where('key', 'maintenance_mode')->value('value');
+                    if ($maintenanceMode === '1' && !Auth::user()->hasRole('Admin')) {
+                        Auth::logout();
+                        $request->session()->invalidate();
+                        $request->session()->regenerateToken();
+                        
+                        return back()->withErrors([
+                            'email' => 'System is under maintenance. Only Administrators can log in.',
+                        ]);
+                    }
+                } catch (\Exception $e) {
+                    // Ignore if settings table doesn't exist
+                }
+
                 return redirect('/admin/dashboard');
             }
 

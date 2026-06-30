@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AdminLayout from '@/Layouts/AdminLayout';
-import { useForm, usePage } from '@inertiajs/react';
+import { useForm, usePage, router } from '@inertiajs/react';
 import Swal from 'sweetalert2';
 
 export default function Settings() {
@@ -8,6 +8,27 @@ export default function Settings() {
     const settings = props.settings || {};
     const [activeTab, setActiveTab] = useState('appearance');
     const [showSecretKey, setShowSecretKey] = useState(false);
+    
+    const [maintenanceMode, setMaintenanceMode] = useState(settings.maintenance_mode === '1');
+    const [maintenanceProcessing, setMaintenanceProcessing] = useState(false);
+
+    const toggleMaintenanceMode = () => {
+        setMaintenanceProcessing(true);
+        const newValue = maintenanceMode ? '0' : '1';
+        router.post(route('admin.settings.maintenance'), { maintenance_mode: newValue }, {
+            preserveScroll: true,
+            onSuccess: () => {
+                setMaintenanceMode(newValue === '1');
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Maintenance mode updated!',
+                    icon: 'success',
+                    confirmButtonColor: '#fdc72f',
+                });
+            },
+            onFinish: () => setMaintenanceProcessing(false)
+        });
+    };
     
     const { data: generalData, setData: setGeneralData, post: postGeneral, processing: processingGeneral } = useForm({
         institutionName: settings.institutionName || 'Versatile Business School',
@@ -31,6 +52,8 @@ export default function Settings() {
         borderRadius: settings.borderRadius || 'rounded',
         header_logo: null,
         sidebar_logo: null,
+        sidebar_closed_logo: null,
+        footer_logo: null,
         favicon: null,
     });
 
@@ -53,6 +76,52 @@ export default function Settings() {
         tawkto_property_id: settings.tawkto_property_id || '',
         tawkto_widget_id: settings.tawkto_widget_id || '',
     });
+
+    const env_mail = props.env_mail || {};
+
+    const { data: emailData, setData: setEmailData, post: postEmail, processing: processingEmail } = useForm({
+        mail_mailer: settings.mail_mailer || env_mail.mail_mailer || 'smtp',
+        mail_host: settings.mail_host || env_mail.mail_host || '',
+        mail_port: settings.mail_port || env_mail.mail_port || '',
+        mail_username: settings.mail_username || env_mail.mail_username || '',
+        mail_password: settings.mail_password || env_mail.mail_password || '',
+        mail_encryption: settings.mail_encryption || env_mail.mail_encryption || 'tls',
+    });
+
+    const submitEmail = (e) => {
+        e.preventDefault();
+        postEmail(route('admin.settings.email'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                Swal.fire('Success', 'Email settings saved successfully!', 'success');
+            }
+        });
+    };
+
+    const testEmailConnection = () => {
+        if (!emailData.mail_host || !emailData.mail_username || !emailData.mail_password) {
+            Swal.fire('Error', 'Please fill in host, username, and password before testing.', 'error');
+            return;
+        }
+        Swal.fire({
+            title: 'Testing Connection...',
+            text: 'Please wait while we attempt to send a test email to your admin address.',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        router.post(route('admin.settings.email.test'), emailData, {
+            preserveScroll: true,
+            onSuccess: (page) => {
+                Swal.fire('Success', 'Test email sent successfully! Check your inbox.', 'success');
+            },
+            onError: (errors) => {
+                Swal.fire('Connection Failed', errors.error || 'Failed to connect to the mail server. Please check your credentials.', 'error');
+            }
+        });
+    };
 
 
 
@@ -526,6 +595,28 @@ export default function Settings() {
                                                             {errors.sidebar_logo && <div className="text-danger mt-1" style={{fontSize: '0.85rem'}}>{errors.sidebar_logo}</div>}
                                                         </div>
                                                         <div className="col-md-4 mb-3">
+                                                            <label className="image-upload-zone" style={{backgroundColor: 'var(--primary-color)', display: 'block', cursor: 'pointer', textAlign: 'center'}}>
+                                                                {(() => {
+                                                                    if (data.sidebar_closed_logo) return <img src={URL.createObjectURL(data.sidebar_closed_logo)} alt="Preview" style={{maxHeight: '60px', marginBottom: '10px'}} />;
+                                                                    if (settings.sidebar_closed_logo) return <img src={window.assets(settings.sidebar_closed_logo)} alt="Current" style={{maxHeight: '60px', marginBottom: '10px'}} />;
+                                                                    return <i className="ri-image-add-line image-upload-icon" style={{color: 'rgba(255,255,255,0.5)'}}></i>;
+                                                                })()}
+                                                                <div className="fw-medium" style={{color: 'white'}}>Sidebar Closed Logo (Icon)</div>
+                                                                <div className="form-help" style={{color: 'rgba(255,255,255,0.7)'}}>{data.sidebar_closed_logo ? data.sidebar_closed_logo.name : 'Click to browse (PNG, SVG)'}</div>
+                                                                <input type="file" style={{display: 'none'}} onChange={(e) => setData('sidebar_closed_logo', e.target.files[0])} />
+                                                            </label>
+                                                            {errors.sidebar_closed_logo && <div className="text-danger mt-1" style={{fontSize: '0.85rem'}}>{errors.sidebar_closed_logo}</div>}
+                                                        </div>
+                                                        <div className="col-md-4 mb-3">
+                                                            <label className="image-upload-zone" style={{display: 'block', cursor: 'pointer', textAlign: 'center'}}>
+                                                                {renderPreview(data.footer_logo, settings.footer_logo)}
+                                                                <div className="fw-medium text-dark">Footer Logo</div>
+                                                                <div className="form-help">{data.footer_logo ? data.footer_logo.name : 'Click to browse (PNG, SVG)'}</div>
+                                                                <input type="file" style={{display: 'none'}} onChange={(e) => setData('footer_logo', e.target.files[0])} />
+                                                            </label>
+                                                            {errors.footer_logo && <div className="text-danger mt-1" style={{fontSize: '0.85rem'}}>{errors.footer_logo}</div>}
+                                                        </div>
+                                                        <div className="col-md-4 mb-3">
                                                             <label className="image-upload-zone" style={{display: 'block', cursor: 'pointer', textAlign: 'center'}}>
                                                                 {renderPreview(data.favicon, settings.favicon)}
                                                                 <div className="fw-medium text-dark">Browser Favicon</div>
@@ -565,13 +656,18 @@ export default function Settings() {
                                     </div>
                                     <div className="option-action">
                                         <label className="switch">
-                                            <input type="checkbox" />
+                                            <input 
+                                                type="checkbox" 
+                                                checked={maintenanceMode}
+                                                onChange={toggleMaintenanceMode}
+                                                disabled={maintenanceProcessing}
+                                            />
                                             <span className="slider round"></span>
                                         </label>
                                     </div>
                                 </div>
 
-                                <div className="advanced-option-item">
+                                <div className="advanced-option-item border-bottom-0 pb-0">
                                     <div className="option-info">
                                         <h5 className="option-title">Clear System Cache</h5>
                                         <p className="option-desc">Force flush the application cache, config cache, and view cache. This may temporarily slow down the site.</p>
@@ -583,17 +679,7 @@ export default function Settings() {
                                     </div>
                                 </div>
 
-                                <div className="advanced-option-item border-bottom-0 pb-0">
-                                    <div className="option-info">
-                                        <h5 className="option-title text-danger">Database Reset</h5>
-                                        <p className="option-desc">Wipe all application data and restore database to factory settings. <strong className="text-danger">This action cannot be undone.</strong></p>
-                                    </div>
-                                    <div className="option-action">
-                                        <button className="btn-secondary btn-sm text-danger border-danger">
-                                            <i className="ri-error-warning-line"></i> Factory Reset
-                                        </button>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     )}
@@ -663,14 +749,14 @@ export default function Settings() {
                                 <h4 className="card-title">Email Configuration</h4>
                             </div>
                             <div className="card-body">
-                                <form className="settings-form">
+                                <form className="settings-form" onSubmit={submitEmail}>
                                     <div className="form-group row">
                                         <div className="col-md-4">
                                             <label className="form-label">Mail Mailer</label>
                                             <span className="form-help">The driver used to send emails.</span>
                                         </div>
                                         <div className="col-md-8">
-                                            <select className="form-control">
+                                            <select className="form-control" value={emailData.mail_mailer} onChange={e => setEmailData('mail_mailer', e.target.value)}>
                                                 <option value="smtp">SMTP</option>
                                                 <option value="mailgun">Mailgun</option>
                                                 <option value="ses">Amazon SES</option>
@@ -683,7 +769,7 @@ export default function Settings() {
                                             <label className="form-label">SMTP Host</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" defaultValue="smtp.mailtrap.io" />
+                                            <input type="text" className="form-control" value={emailData.mail_host} onChange={e => setEmailData('mail_host', e.target.value)} />
                                         </div>
                                     </div>
 
@@ -692,7 +778,7 @@ export default function Settings() {
                                             <label className="form-label">SMTP Port</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" defaultValue="2525" />
+                                            <input type="text" className="form-control" value={emailData.mail_port} onChange={e => setEmailData('mail_port', e.target.value)} />
                                         </div>
                                     </div>
 
@@ -701,7 +787,7 @@ export default function Settings() {
                                             <label className="form-label">SMTP Username</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" defaultValue="sandbox_user_123" />
+                                            <input type="text" className="form-control" value={emailData.mail_username} onChange={e => setEmailData('mail_username', e.target.value)} />
                                         </div>
                                     </div>
 
@@ -710,7 +796,7 @@ export default function Settings() {
                                             <label className="form-label">SMTP Password</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="password" className="form-control" defaultValue="**********" />
+                                            <input type="password" className="form-control" value={emailData.mail_password} onChange={e => setEmailData('mail_password', e.target.value)} />
                                         </div>
                                     </div>
 
@@ -721,15 +807,15 @@ export default function Settings() {
                                         </div>
                                         <div className="option-action">
                                             <label className="switch">
-                                                <input type="checkbox" defaultChecked />
+                                                <input type="checkbox" checked={emailData.mail_encryption === 'tls'} onChange={e => setEmailData('mail_encryption', e.target.checked ? 'tls' : 'none')} />
                                                 <span className="slider round"></span>
                                             </label>
                                         </div>
                                     </div>
 
                                     <div className="form-actions text-right mt-4 pt-3 border-top">
-                                        <button type="button" className="btn-secondary mr-2">Test Connection</button>
-                                        <button type="button" className="btn-primary">Save Mail Configuration</button>
+                                        <button type="button" className="btn-secondary mr-2" onClick={testEmailConnection}>Test Connection</button>
+                                        <button type="submit" className="btn-primary" disabled={processingEmail}>Save Mail Configuration</button>
                                     </div>
                                 </form>
                             </div>

@@ -16,6 +16,23 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->check() && auth()->user()->is_admin) {
+            
+            // Check maintenance mode for non-Admin roles (e.g. Editor)
+            try {
+                $maintenanceMode = \App\Models\Setting::where('key', 'maintenance_mode')->value('value');
+                if ($maintenanceMode === '1' && !auth()->user()->hasRole('Admin')) {
+                    auth()->logout();
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+                    
+                    return redirect()->route('admin.login.get')->withErrors([
+                        'email' => 'System is under maintenance. Only Administrators can log in.',
+                    ]);
+                }
+            } catch (\Exception $e) {
+                // Ignore if settings table doesn't exist
+            }
+
             return $next($request);
         }
 

@@ -86,11 +86,23 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     // Settings – requires 'manage settings'
     Route::middleware('can:manage settings')->group(function () {
         Route::get('/settings', function () {
-            return Inertia::render('Admin/Settings/Index');
+            return Inertia::render('Admin/Settings/Index', [
+                'env_mail' => [
+                    'mail_mailer' => config('mail.default'),
+                    'mail_host' => config('mail.mailers.smtp.host'),
+                    'mail_port' => config('mail.mailers.smtp.port'),
+                    'mail_username' => config('mail.mailers.smtp.username'),
+                    'mail_password' => config('mail.mailers.smtp.password') ? '********' : '',
+                    'mail_encryption' => config('mail.mailers.smtp.encryption'),
+                ]
+            ]);
         })->name('admin.settings');
         
         Route::post('/settings/general', [\App\Http\Controllers\Admin\SettingController::class, 'updateGeneral'])->name('admin.settings.general');
         Route::post('/settings/appearance', [\App\Http\Controllers\Admin\SettingController::class, 'updateAppearance'])->name('admin.settings.appearance');
+        Route::post('/settings/maintenance', [\App\Http\Controllers\Admin\SettingController::class, 'updateMaintenance'])->name('admin.settings.maintenance');
+        Route::post('/settings/email', [\App\Http\Controllers\Admin\SettingController::class, 'updateEmail'])->name('admin.settings.email');
+        Route::post('/settings/email/test', [\App\Http\Controllers\Admin\SettingController::class, 'testEmail'])->name('admin.settings.email.test');
         Route::post('/settings/recaptcha', [\App\Http\Controllers\Admin\SettingController::class, 'updateRecaptcha'])->name('admin.settings.recaptcha');
         Route::post('/settings/chat', [\App\Http\Controllers\Admin\SettingController::class, 'updateChat'])->name('admin.settings.chat');
         Route::post('/settings/seo', [\App\Http\Controllers\Admin\SettingController::class, 'updateSeo'])->name('admin.settings.seo');

@@ -907,8 +907,8 @@ export default function Index({ banners, courses = [] }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-12">
-                                <div className="rs-tuition-wrapper">
-                                    <div className="rs-tuition-sec-wrapper">
+                                <div className="rs-tuition-wrapper" style={{ alignItems: 'flex-start' }}>
+                                    <div className="rs-tuition-sec-wrapper" style={{ position: 'sticky', top: '120px' }}>
                                         <div className="section-title-wrapper">
                                             <span className="section-subtitle has-dark-grey is-uppercase">
                                                 Work & Study Program
@@ -943,48 +943,81 @@ export default function Index({ banners, courses = [] }) {
                                     </div>
 
                                     {/* Right side features */}
-                                    <div className="rs-tuition-content-wrapper" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                                    <div className="rs-tuition-content-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingLeft: '20px' }}>
 
-                                        <div className="rs-tuition-item" style={{ padding: '16px 20px', borderRadius: '12px' }}>
-                                            <div className="rs-tuition-top mb-1">
-                                                <h5 className="rs-tuition-title" style={{ fontSize: '18px', marginBottom: '0' }}>Guaranteed Placement Assistance</h5>
+                                        <div className="rs-tuition-item" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid #f1f5f9', background: '#ffffff', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#0f172a' }}>Guaranteed Placement Assistance</h5>
                                             </div>
                                             <div className="rs-tuition-info-wrapper">
-                                                <p style={{ color: '#4b5563', lineHeight: '1.4', marginBottom: '0' }}>
+                                                <p style={{ color: '#475569', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
                                                     ‘Versatile’ shall provide jobs in <strong>HR, Marketing, or Business Analytics</strong> by a separate MOU entered with the respective recruiting company as soon as the admission process is over.
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <div className="rs-tuition-item has-theme-blue-two" style={{ padding: '16px 20px', borderRadius: '12px' }}>
-                                            <div className="rs-tuition-top mb-1">
-                                                <h5 className="rs-tuition-title" style={{ fontSize: '18px', marginBottom: '0' }}>Earn While You Learn</h5>
+                                        <div className="rs-tuition-item has-theme-blue-two" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#ffffff' }}>Earn While You Learn</h5>
                                             </div>
                                             <div className="rs-tuition-info-wrapper">
-                                                <p style={{ color: '#ffffff', lineHeight: '1.4', marginBottom: '0' }}>
+                                                <p style={{ color: 'rgba(255,255,255,0.9)', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
                                                     Salary shall range between <strong>10k - 15k</strong> depending on the ability of the candidate. Employment is available during the tenure of study and, if satisfactory, beyond!
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <div className="rs-tuition-item has-theme-blue-two" style={{ padding: '16px 20px', borderRadius: '12px' }}>
-                                            <div className="rs-tuition-top mb-1">
-                                                <h5 className="rs-tuition-title" style={{ fontSize: '18px', marginBottom: '0' }}>On-the-Job Training</h5>
+                                        <div className="rs-tuition-item has-theme-blue-two" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#ffffff' }}>On-the-Job Training</h5>
                                             </div>
                                             <div className="rs-tuition-info-wrapper">
-                                                <p style={{ color: '#ffffff', lineHeight: '1.4', marginBottom: '0' }}>
+                                                <p style={{ color: 'rgba(255,255,255,0.9)', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
                                                     On-the-job training in HR or Marketing shall be provided directly by the recruiting company, while your comprehensive MBA course shall be conducted by ‘Versatile’.
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <div className="rs-tuition-item" style={{ padding: '16px 20px', borderRadius: '12px' }}>
-                                            <div className="rs-tuition-top mb-1">
-                                                <h5 className="rs-tuition-title" style={{ fontSize: '18px', marginBottom: '0' }}>Eligibility & Conditions</h5>
+                                        <div className="rs-tuition-item" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid #f1f5f9', background: '#ffffff', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#0f172a' }}>Eligibility & Conditions</h5>
                                             </div>
                                             <div className="rs-tuition-info-wrapper">
-                                                <p style={{ color: '#4b5563', lineHeight: '1.4', marginBottom: '0' }}>
+                                                <p style={{ color: '#475569', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
                                                     Employment is subject to a test and interview conducted by the recruiting company. Gain a strong competitive edge by building your resume before you even graduate!
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="rs-tuition-item has-theme-blue-two" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#ffffff' }}>Global Alumni Network</h5>
+                                            </div>
+                                            <div className="rs-tuition-info-wrapper">
+                                                <p style={{ color: 'rgba(255,255,255,0.9)', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
+                                                    Connect with thousands of successful graduates worldwide. Build lifelong professional relationships that can help open doors to new career opportunities.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="rs-tuition-item" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid #f1f5f9', background: '#ffffff', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#0f172a' }}>100% Practical Exposure</h5>
+                                            </div>
+                                            <div className="rs-tuition-info-wrapper">
+                                                <p style={{ color: '#475569', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
+                                                    Gain real-world insights through regular case studies, live projects, and interactive simulations that prepare you for complex corporate challenges.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="rs-tuition-item has-theme-blue-two" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
+                                            <div className="rs-tuition-top mb-3">
+                                                <h5 className="rs-tuition-title" style={{ fontSize: '20px', marginBottom: '0', fontWeight: '700', color: '#ffffff' }}>Industry Expert Mentors</h5>
+                                            </div>
+                                            <div className="rs-tuition-info-wrapper">
+                                                <p style={{ color: 'rgba(255,255,255,0.9)', lineHeight: '1.6', marginBottom: '0', fontSize: '15px' }}>
+                                                    Learn directly from top business leaders, CEOs, and corporate veterans who bring decades of invaluable firsthand industry experience to the classroom.
                                                 </p>
                                             </div>
                                         </div>

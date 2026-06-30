@@ -377,7 +377,7 @@ export default function Footer() {
                     <div className="footer-col">
                         <Link href={route('home')}>
                             <img
-                                src={settings?.header_logo || '/assets/images/logo/logo.jpeg'}
+                                src={settings?.footer_logo || settings?.header_logo || '/assets/images/logo/logo.jpeg'}
                                 alt="logo"
                                 className="footer-logo"
                                 loading="lazy"

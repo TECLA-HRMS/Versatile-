@@ -108,357 +108,208 @@ export default function Index({ metrics = {}, applicationStats = {}, enquiryStat
         <AdminLayout title="Dashboard">
             <Head title="Dashboard" />
 
-            <div className="apt-header">
-                <div className="apt-header-info">
-                    <h2>Dashboard</h2>
-                    <p>Platform overview and recent activity</p>
+            <div className="page-title-box">
+                <div>
+                    <h2 className="page-title">Dashboard Overview</h2>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '14px', margin: 0 }}>
+                        Welcome back! Here's what's happening today.
+                    </p>
+                </div>
+                <div className="title-right">
+                    <div className="date-display">
+                        <i className="ri-calendar-line"></i>
+                        {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                    </div>
                 </div>
             </div>
 
-            {/* Overview Cards */}
-            <div style={styles.section}>
-                <div style={styles.cardGrid}>
-                    {overviewCards.map((card) => (
-                        <Link
-                            key={card.label}
-                            href={card.link}
-                            style={styles.card}
-                            onMouseOver={(e) => {
-                                e.currentTarget.style.borderColor = card.color;
-                                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)';
-                            }}
-                            onMouseOut={(e) => {
-                                e.currentTarget.style.borderColor = 'var(--border-color, #e2e8f0)';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
-                        >
-                            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                                <div>
-                                    <div style={{
-                                        fontSize: '32px',
-                                        fontWeight: '700',
-                                        color: 'var(--text-primary, #0f172a)',
-                                        lineHeight: '1',
-                                        marginBottom: '6px',
-                                    }}>
-                                        {card.value}
-                                    </div>
-                                    <div style={{
-                                        fontSize: '14px',
-                                        fontWeight: '500',
-                                        color: 'var(--text-secondary, #64748b)',
-                                    }}>
-                                        {card.label}
-                                    </div>
-                                </div>
-                                <div style={{
-                                    width: '44px',
-                                    height: '44px',
-                                    borderRadius: '10px',
-                                    background: `${card.color}10`,
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
+            {/* Overview Cards using admin-panel.css metric-card */}
+            <div className="metrics-row" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
+                {overviewCards.map((card, index) => (
+                    <Link key={card.label} href={card.link} style={{ textDecoration: 'none' }}>
+                        <div className="metric-card" style={{ padding: '24px', borderTopColor: card.color }}>
+                            <div className="metric-header" style={{ marginBottom: '12px' }}>
+                                <span className="metric-title">{card.label}</span>
+                                <div style={{ 
+                                    width: '40px', height: '40px', borderRadius: '10px', 
+                                    background: `${card.color}15`, color: card.color,
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center'
                                 }}>
-                                    <i className={card.icon} style={{ fontSize: '22px', color: card.color }}></i>
+                                    <i className={card.icon} className="metric-icon" style={{ color: card.color, fontSize: '20px' }}></i>
                                 </div>
                             </div>
+                            <div className="metric-value" style={{ fontSize: '32px', marginBottom: '4px' }}>
+                                {card.value}
+                            </div>
+                            <div className="metric-subtext">
+                                <span className="trend up" style={{ color: card.color }}>
+                                    <i className="ri-arrow-right-up-line"></i> View details
+                                </span>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px', marginBottom: '24px' }}>
+                {/* Application Stats */}
+                <div className="card">
+                    <div className="card-header">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <div style={{ padding: '8px', background: 'var(--success-bg)', borderRadius: '8px', color: 'var(--success)' }}>
+                                <i className="ri-file-user-line" style={{ fontSize: '18px' }}></i>
+                            </div>
+                            <h3 className="card-title">Application Statistics</h3>
+                        </div>
+                        <Link href="/admin/applications" className="btn-sm btn-secondary" style={{ textDecoration: 'none' }}>
+                            View All
                         </Link>
-                    ))}
-                </div>
-            </div>
-
-            {/* Application & Enquiry Stats */}
-            <div style={{ ...styles.section }}>
-                <div style={styles.statsGrid}>
-                    {/* Application Stats */}
-                    <div style={styles.statsCard}>
-                        <div style={styles.statsHeader}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <div style={{
-                                    width: '36px',
-                                    height: '36px',
-                                    borderRadius: '8px',
-                                    background: '#05966910',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}>
-                                    <i className="ri-file-user-line" style={{ fontSize: '18px', color: '#059669' }}></i>
-                                </div>
-                                <span style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text-primary, #1e293b)' }}>
-                                    Application Statistics
-                                </span>
-                            </div>
-                            <Link href="/admin/applications" style={{ fontSize: '13px', color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
-                                View All →
-                            </Link>
-                        </div>
-                        <div style={styles.statsBody}>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{applicationStats.today || 0}</div>
-                                <div style={styles.statsLabel}>Today</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{applicationStats.this_week || 0}</div>
-                                <div style={styles.statsLabel}>This Week</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{applicationStats.this_month || 0}</div>
-                                <div style={styles.statsLabel}>This Month</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{applicationStats.total || 0}</div>
-                                <div style={styles.statsLabel}>All Time</div>
-                            </div>
-                        </div>
                     </div>
+                    <div className="card-body p-0" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1px', background: 'var(--border-color)' }}>
+                        {[
+                            { label: 'Today', value: applicationStats.today || 0 },
+                            { label: 'This Week', value: applicationStats.this_week || 0 },
+                            { label: 'This Month', value: applicationStats.this_month || 0 },
+                            { label: 'All Time', value: applicationStats.total || 0 }
+                        ].map(stat => (
+                            <div key={stat.label} style={{ background: 'var(--card-bg, #fff)', padding: '20px' }}>
+                                <div style={{ fontSize: '24px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '4px' }}>{stat.value}</div>
+                                <div style={{ fontSize: '13px', color: 'var(--text-secondary)', fontWeight: '500' }}>{stat.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
-                    {/* Enquiry Stats */}
-                    <div style={styles.statsCard}>
-                        <div style={styles.statsHeader}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <div style={{
-                                    width: '36px',
-                                    height: '36px',
-                                    borderRadius: '8px',
-                                    background: '#d9770610',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}>
-                                    <i className="ri-mail-send-line" style={{ fontSize: '18px', color: '#d97706' }}></i>
-                                </div>
-                                <span style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text-primary, #1e293b)' }}>
-                                    Enquiry Statistics
-                                </span>
+                {/* Enquiry Stats */}
+                <div className="card">
+                    <div className="card-header">
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <div style={{ padding: '8px', background: 'var(--warning-bg)', borderRadius: '8px', color: 'var(--warning)' }}>
+                                <i className="ri-mail-send-line" style={{ fontSize: '18px' }}></i>
                             </div>
-                            <Link href="/admin/enquiries" style={{ fontSize: '13px', color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
-                                View All →
-                            </Link>
+                            <h3 className="card-title">Enquiry Statistics</h3>
                         </div>
-                        <div style={{ ...styles.statsBody, gridTemplateColumns: 'repeat(3, 1fr)' }}>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{enquiryStats.today || 0}</div>
-                                <div style={styles.statsLabel}>Today</div>
+                        <Link href="/admin/enquiries" className="btn-sm btn-secondary" style={{ textDecoration: 'none' }}>
+                            View All
+                        </Link>
+                    </div>
+                    <div className="card-body p-0" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: 'var(--border-color)' }}>
+                        {[
+                            { label: 'Today', value: enquiryStats.today || 0 },
+                            { label: 'This Week', value: enquiryStats.this_week || 0 },
+                            { label: 'This Month', value: enquiryStats.this_month || 0 },
+                            { label: 'Brochure', value: enquiryStats.brochure_downloads || 0 },
+                            { label: 'Contact', value: enquiryStats.contact_requests || 0 },
+                            { label: 'Total', value: enquiryStats.total || 0 }
+                        ].map(stat => (
+                            <div key={stat.label} style={{ background: 'var(--card-bg, #fff)', padding: '16px' }}>
+                                <div style={{ fontSize: '20px', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '4px' }}>{stat.value}</div>
+                                <div style={{ fontSize: '12px', color: 'var(--text-secondary)', fontWeight: '500' }}>{stat.label}</div>
                             </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{enquiryStats.this_week || 0}</div>
-                                <div style={styles.statsLabel}>This Week</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{enquiryStats.this_month || 0}</div>
-                                <div style={styles.statsLabel}>This Month</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{enquiryStats.brochure_downloads || 0}</div>
-                                <div style={styles.statsLabel}>Brochure Downloads</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{enquiryStats.contact_requests || 0}</div>
-                                <div style={styles.statsLabel}>Contact Requests</div>
-                            </div>
-                            <div style={styles.statsItem}>
-                                <div style={styles.statsValue}>{enquiryStats.total || 0}</div>
-                                <div style={styles.statsLabel}>All Time</div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
 
-            {/* Recent Activity */}
-            <div style={styles.section}>
-                <div style={styles.statsGrid}>
-                    {/* Recent Applications */}
-                    <div style={styles.listCard}>
-                        <div style={styles.listHeader}>
-                            <span style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text-primary, #1e293b)' }}>
-                                Recent Applications
-                            </span>
-                            <Link href="/admin/applications" style={{ fontSize: '13px', color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
-                                View All →
-                            </Link>
-                        </div>
-                        <div>
-                            {recentApplications.length > 0 ? (
-                                recentApplications.map((app) => (
-                                    <div
-                                        key={app.id}
-                                        style={styles.listItem}
-                                        onMouseOver={(e) => e.currentTarget.style.background = 'var(--hover-bg, #fafafa)'}
-                                        onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
-                                    >
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                            <div style={{
-                                                width: '38px',
-                                                height: '38px',
-                                                borderRadius: '50%',
-                                                background: '#4f46e510',
-                                                border: '1px solid #4f46e520',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                color: '#4f46e5',
-                                                fontSize: '14px',
-                                                fontWeight: '600',
-                                                flexShrink: 0,
-                                            }}>
-                                                {(app.first_name || 'A').charAt(0).toUpperCase()}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px', marginBottom: '24px' }}>
+                {/* Recent Applications */}
+                <div className="card">
+                    <div className="card-header">
+                        <h3 className="card-title">Recent Applications</h3>
+                    </div>
+                    <div className="card-body p-0">
+                        {recentApplications.length > 0 ? (
+                            recentApplications.map((app) => (
+                                <div key={app.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--border-color)', transition: 'background 0.2s' }} onMouseOver={(e) => e.currentTarget.style.background = 'var(--bg-app)'} onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                        <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--info-bg)', color: 'var(--info)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600' }}>
+                                            {(app.first_name || 'A').charAt(0).toUpperCase()}
+                                        </div>
+                                        <div>
+                                            <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                                                {app.first_name} {app.last_name}
                                             </div>
-                                            <div>
-                                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text-primary, #1e293b)' }}>
-                                                    {app.first_name} {app.last_name}
-                                                </div>
-                                                <div style={{ fontSize: '13px', color: 'var(--text-secondary, #64748b)', marginTop: '2px' }}>
-                                                    {app.course?.name || '—'}
-                                                </div>
+                                            <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
+                                                {app.course?.name || '—'}
                                             </div>
                                         </div>
-                                        <span style={{
-                                            fontSize: '12px',
-                                            color: 'var(--text-secondary, #94a3b8)',
-                                            fontWeight: '500',
-                                        }}>
-                                            {new Date(app.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                    </div>
+                                    <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>
+                                        {new Date(app.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                                    </span>
+                                </div>
+                            ))
+                        ) : (
+                            <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--text-muted)' }}>
+                                <i className="ri-inbox-line" style={{ fontSize: '32px', display: 'block', marginBottom: '8px' }}></i>
+                                <p style={{ margin: 0, fontSize: '14px' }}>No applications received yet</p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Recent Enquiries */}
+                <div className="card">
+                    <div className="card-header">
+                        <h3 className="card-title">Recent Enquiries</h3>
+                    </div>
+                    <div className="card-body p-0">
+                        {recentEnquiries.length > 0 ? (
+                            recentEnquiries.map((enquiry) => (
+                                <div key={enquiry.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: '1px solid var(--border-color)', transition: 'background 0.2s' }} onMouseOver={(e) => e.currentTarget.style.background = 'var(--bg-app)'} onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                        <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--warning-bg)', color: 'var(--warning)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '600' }}>
+                                            {(enquiry.name || 'E').charAt(0).toUpperCase()}
+                                        </div>
+                                        <div>
+                                            <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                                                {enquiry.name}
+                                            </div>
+                                            <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '2px' }}>
+                                                {enquiry.email}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        <span style={{ fontSize: '10px', fontWeight: '700', textTransform: 'uppercase', padding: '4px 8px', borderRadius: '4px', background: enquiry.type === 'brochure_download' ? 'var(--info-bg)' : 'var(--danger-bg)', color: enquiry.type === 'brochure_download' ? 'var(--info)' : 'var(--danger)' }}>
+                                            {enquiry.type === 'brochure_download' ? 'Brochure' : 'Contact'}
                                         </span>
                                     </div>
-                                ))
-                            ) : (
-                                <div style={{ padding: '48px 22px', textAlign: 'center', color: 'var(--text-secondary, #94a3b8)' }}>
-                                    <i className="ri-inbox-line" style={{ fontSize: '36px', display: 'block', marginBottom: '8px' }}></i>
-                                    <p style={{ margin: 0, fontSize: '14px' }}>No applications received yet</p>
                                 </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Recent Enquiries */}
-                    <div style={styles.listCard}>
-                        <div style={styles.listHeader}>
-                            <span style={{ fontSize: '15px', fontWeight: '600', color: 'var(--text-primary, #1e293b)' }}>
-                                Recent Enquiries
-                            </span>
-                            <Link href="/admin/enquiries" style={{ fontSize: '13px', color: '#2563eb', textDecoration: 'none', fontWeight: '500' }}>
-                                View All →
-                            </Link>
-                        </div>
-                        <div>
-                            {recentEnquiries.length > 0 ? (
-                                recentEnquiries.map((enquiry) => (
-                                    <div
-                                        key={enquiry.id}
-                                        style={styles.listItem}
-                                        onMouseOver={(e) => e.currentTarget.style.background = 'var(--hover-bg, #fafafa)'}
-                                        onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
-                                    >
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                                            <div style={{
-                                                width: '38px',
-                                                height: '38px',
-                                                borderRadius: '50%',
-                                                background: '#d9770610',
-                                                border: '1px solid #d9770620',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                color: '#d97706',
-                                                fontSize: '14px',
-                                                fontWeight: '600',
-                                                flexShrink: 0,
-                                            }}>
-                                                {(enquiry.name || 'E').charAt(0).toUpperCase()}
-                                            </div>
-                                            <div>
-                                                <div style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text-primary, #1e293b)' }}>
-                                                    {enquiry.name}
-                                                </div>
-                                                <div style={{ fontSize: '13px', color: 'var(--text-secondary, #64748b)', marginTop: '2px' }}>
-                                                    {enquiry.email}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                            <span style={{
-                                                fontSize: '11px',
-                                                fontWeight: '600',
-                                                textTransform: 'uppercase',
-                                                letterSpacing: '0.3px',
-                                                padding: '3px 8px',
-                                                borderRadius: '4px',
-                                                background: enquiry.type === 'brochure_download' ? '#dbeafe' : '#fce7f3',
-                                                color: enquiry.type === 'brochure_download' ? '#1d4ed8' : '#be185d',
-                                            }}>
-                                                {enquiry.type === 'brochure_download' ? 'Brochure' : 'Contact'}
-                                            </span>
-                                            <span style={{
-                                                fontSize: '12px',
-                                                color: 'var(--text-secondary, #94a3b8)',
-                                                fontWeight: '500',
-                                            }}>
-                                                {new Date(enquiry.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                                            </span>
-                                        </div>
-                                    </div>
-                                ))
-                            ) : (
-                                <div style={{ padding: '48px 22px', textAlign: 'center', color: 'var(--text-secondary, #94a3b8)' }}>
-                                    <i className="ri-inbox-line" style={{ fontSize: '36px', display: 'block', marginBottom: '8px' }}></i>
-                                    <p style={{ margin: 0, fontSize: '14px' }}>No enquiries received yet</p>
-                                </div>
-                            )}
-                        </div>
+                            ))
+                        ) : (
+                            <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--text-muted)' }}>
+                                <i className="ri-inbox-line" style={{ fontSize: '32px', display: 'block', marginBottom: '8px' }}></i>
+                                <p style={{ margin: 0, fontSize: '14px' }}>No enquiries received yet</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
 
             {/* Quick Actions */}
-            <div style={styles.section}>
-                <div style={styles.sectionTitle}>
-                    <i className="ri-flashlight-line" style={{ fontSize: '18px', color: 'var(--text-secondary, #64748b)' }}></i>
-                    Quick Actions
+            <div className="card">
+                <div className="card-header">
+                    <h3 className="card-title">Quick Actions</h3>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                    {[
-                        { label: 'New Program', icon: 'ri-add-circle-line', href: '/admin/programs/create' },
-                        { label: 'New Course', icon: 'ri-add-circle-line', href: '/admin/courses/create' },
-                        { label: 'New Banner', icon: 'ri-image-add-line', href: '/admin/banners/create' },
-                        { label: 'New Popup', icon: 'ri-window-line', href: '/admin/popups/create' },
-                        { label: 'Applications', icon: 'ri-file-user-line', href: '/admin/applications' },
-                        { label: 'Enquiries', icon: 'ri-mail-send-line', href: '/admin/enquiries' },
-                        { label: 'Users', icon: 'ri-user-add-line', href: '/admin/users' },
-                        { label: 'Settings', icon: 'ri-settings-4-line', href: '/admin/settings' },
-                    ].map((action) => (
-                        <Link
-                            key={action.label}
-                            href={action.href}
-                            style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '7px',
-                                padding: '9px 16px',
-                                borderRadius: 'var(--radius-sm, 6px)',
-                                border: '1px solid var(--border-color, #e2e8f0)',
-                                background: 'var(--card-bg, #ffffff)',
-                                color: 'var(--text-primary, #475569)',
-                                fontSize: '13px',
-                                fontWeight: '500',
-                                textDecoration: 'none',
-                                transition: 'all 0.15s ease',
-                            }}
-                            onMouseOver={(e) => {
-                                e.currentTarget.style.background = 'var(--hover-bg, #f8fafc)';
-                                e.currentTarget.style.borderColor = '#94a3b8';
-                            }}
-                            onMouseOut={(e) => {
-                                e.currentTarget.style.background = 'var(--card-bg, #ffffff)';
-                                e.currentTarget.style.borderColor = 'var(--border-color, #e2e8f0)';
-                            }}
-                        >
-                            <i className={action.icon} style={{ fontSize: '16px' }}></i>
-                            {action.label}
-                        </Link>
-                    ))}
+                <div className="card-body">
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+                        {[
+                            { label: 'New Program', icon: 'ri-add-circle-line', href: '/admin/programs/create' },
+                            { label: 'New Course', icon: 'ri-add-circle-line', href: '/admin/courses/create' },
+                            { label: 'New Banner', icon: 'ri-image-add-line', href: '/admin/banners/create' },
+                            { label: 'New Popup', icon: 'ri-window-line', href: '/admin/popups/create' },
+                            { label: 'Applications', icon: 'ri-file-user-line', href: '/admin/applications' },
+                            { label: 'Enquiries', icon: 'ri-mail-send-line', href: '/admin/enquiries' },
+                            { label: 'Users', icon: 'ri-user-add-line', href: '/admin/users' },
+                            { label: 'Settings', icon: 'ri-settings-4-line', href: '/admin/settings' },
+                        ].map((action) => (
+                            <Link key={action.label} href={action.href} className="btn-secondary" style={{ textDecoration: 'none', background: 'var(--card-bg)' }}>
+                                <i className={action.icon} style={{ fontSize: '16px' }}></i>
+                                {action.label}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
         </AdminLayout>

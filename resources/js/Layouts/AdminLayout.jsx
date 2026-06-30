@@ -202,7 +202,7 @@ export default function AdminLayout({ children, title }) {
                     src={
                         isSidebarOpen
                             ? (settings.sidebar_logo || assets('assets/images/logo/logo-v.png'))
-                            : assets('assets/images/logo/remove-bg.png')
+                            : (settings.sidebar_closed_logo || assets('assets/images/logo/remove-bg.png'))
                     }
                     alt="Versatile Business School Logo"
                     className="brand-image"

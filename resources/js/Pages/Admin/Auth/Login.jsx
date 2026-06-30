@@ -22,14 +22,14 @@ export default function Login() {
     return (
         <div className="login-container">
             <Head title="Admin Login" />
-            
+
             <div className="left-panel">
                 <div className="logo-background">
                     <img src={assets('assets/images/logo/remove-bg.png')} alt="University Logo" className="logo" />
                 </div>
                 <h1 className="welcome-text">Versatile Business School</h1>
                 <p className="welcome-subtext">Administrative Management Portal</p>
-                
+
                 {/* Decorative background elements */}
                 <div className="decorative-circle circle-1"></div>
                 <div className="decorative-circle circle-2"></div>
@@ -80,8 +80,8 @@ export default function Login() {
                                     className="input-field with-icon password-field"
                                     placeholder="••••••••"
                                 />
-                                <button 
-                                    type="button" 
+                                <button
+                                    type="button"
                                     className="password-toggle-btn"
                                     onClick={() => setShowPassword(!showPassword)}
                                     title={showPassword ? "Hide password" : "Show password"}
@@ -135,7 +135,7 @@ export default function Login() {
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+                    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
                     position: relative;
                     padding: 40px;
                     border-right: 1px solid #e2e8f0;
@@ -147,33 +147,48 @@ export default function Login() {
                     border-radius: 50%;
                     background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
                     pointer-events: none;
+                    animation: float 6s ease-in-out infinite;
+                }
+
+                @keyframes float {
+                    0% { transform: translateY(0px); }
+                    50% { transform: translateY(-20px); }
+                    100% { transform: translateY(0px); }
                 }
 
                 .circle-1 {
-                    width: 400px;
-                    height: 400px;
-                    top: -100px;
-                    left: -100px;
+                    width: 450px;
+                    height: 450px;
+                    top: -120px;
+                    left: -120px;
+                    animation-delay: 0s;
                 }
 
                 .circle-2 {
-                    width: 300px;
-                    height: 300px;
-                    bottom: -50px;
-                    right: -50px;
+                    width: 350px;
+                    height: 350px;
+                    bottom: -80px;
+                    right: -80px;
+                    animation-delay: -3s;
                 }
 
                 .logo-background {
-                    background-color: #ffffff;
+                    background: rgba(255, 255, 255, 0.9);
+                    backdrop-filter: blur(10px);
                     padding: 50px 60px;
                     border-radius: 40px;
-                    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
                     margin-bottom: 48px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     position: relative;
                     z-index: 10;
+                    transition: transform 0.3s ease;
+                }
+                
+                .logo-background:hover {
+                    transform: translateY(-5px);
                 }
 
                 .logo {
@@ -182,9 +197,9 @@ export default function Login() {
                 }
 
                 .welcome-text {
-                    font-size: 32px;
+                    font-size: 34px;
                     font-weight: 800;
-                    color: #0f172a;
+                    color: #102a43;
                     margin-bottom: 12px;
                     text-align: center;
                     letter-spacing: -1px;
@@ -194,7 +209,7 @@ export default function Login() {
 
                 .welcome-subtext {
                     font-size: 18px;
-                    color: #64748b;
+                    color: #486581;
                     text-align: center;
                     font-weight: 500;
                     position: relative;
@@ -213,11 +228,17 @@ export default function Login() {
 
                 .form-container {
                     width: 100%;
-                    max-width: 420px;
+                    max-width: 440px;
+                    animation: fadeIn 0.8s ease-out forwards;
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
 
                 .header {
-                    margin-bottom: 40px;
+                    margin-bottom: 44px;
                     text-align: center;
                     display: flex;
                     flex-direction: column;
@@ -225,15 +246,16 @@ export default function Login() {
                 }
 
                 .icon-wrapper {
-                    width: 56px;
-                    height: 56px;
-                    background-color: #f1f5f9;
-                    border-radius: 16px;
+                    width: 64px;
+                    height: 64px;
+                    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+                    border-radius: 18px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    margin-bottom: 20px;
-                    border: 1px solid #e2e8f0;
+                    margin-bottom: 24px;
+                    border: 1px solid #cbd5e1;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
                 }
 
                 .title {
@@ -245,7 +267,7 @@ export default function Login() {
                 }
 
                 .subtitle {
-                    font-size: 15px;
+                    font-size: 16px;
                     color: #64748b;
                     font-weight: 500;
                 }
@@ -253,19 +275,20 @@ export default function Login() {
                 .form {
                     display: flex;
                     flex-direction: column;
-                    gap: 24px;
+                    gap: 26px;
                 }
 
                 .input-group {
                     display: flex;
                     flex-direction: column;
-                    gap: 8px;
+                    gap: 10px;
                 }
 
                 .label {
                     font-size: 14px;
                     font-weight: 700;
                     color: #1e293b;
+                    margin-left: 4px;
                 }
 
                 .input-wrapper {
@@ -276,33 +299,39 @@ export default function Login() {
 
                 .input-icon {
                     position: absolute;
-                    left: 16px;
+                    left: 18px;
                     color: #94a3b8;
-                    transition: color 0.2s ease;
+                    transition: color 0.3s ease;
                 }
 
                 .input-field {
                     width: 100%;
                     padding: 16px 20px;
-                    border-radius: 12px;
-                    border: 1px solid #e2e8f0;
+                    border-radius: 14px;
+                    border: 1.5px solid #e2e8f0;
                     background-color: #f8fafc;
                     font-size: 15px;
                     color: #0f172a;
-                    transition: all 0.2s ease;
+                    transition: all 0.3s ease;
                     box-sizing: border-box;
                     font-family: inherit;
+                    font-weight: 500;
                 }
 
                 .input-field.with-icon {
-                    padding-left: 48px;
+                    padding-left: 52px;
+                }
+
+                .input-field::placeholder {
+                    color: #94a3b8;
+                    font-weight: 400;
                 }
 
                 .input-field:focus {
                     outline: none;
                     border-color: #3b82f6;
                     background-color: #ffffff;
-                    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+                    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
                 }
 
                 .input-field:focus + .input-icon,
@@ -311,20 +340,20 @@ export default function Login() {
                 }
 
                 .password-field {
-                    padding-right: 48px;
+                    padding-right: 52px;
                 }
 
                 .password-toggle-btn {
                     position: absolute;
-                    right: 12px;
+                    right: 14px;
                     background: transparent;
                     border: none;
                     cursor: pointer;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 6px;
-                    border-radius: 8px;
+                    padding: 8px;
+                    border-radius: 10px;
                     color: #94a3b8;
                     transition: all 0.2s;
                 }
@@ -342,6 +371,7 @@ export default function Login() {
                     display: flex;
                     align-items: center;
                     gap: 4px;
+                    margin-left: 4px;
                 }
 
                 .remember-group {
@@ -349,6 +379,7 @@ export default function Login() {
                     align-items: center;
                     justify-content: space-between;
                     margin-top: 4px;
+                    padding: 0 4px;
                 }
 
                 .checkbox-label {
@@ -362,12 +393,13 @@ export default function Login() {
                 }
 
                 .checkbox {
-                    width: 18px;
-                    height: 18px;
+                    width: 20px;
+                    height: 20px;
                     accent-color: #0f172a;
                     cursor: pointer;
                     border-radius: 6px;
-                    border: 1px solid #cbd5e1;
+                    border: 1.5px solid #cbd5e1;
+                    transition: all 0.2s;
                 }
 
                 .forgot-password {
@@ -384,56 +416,61 @@ export default function Login() {
                 }
 
                 .submit-button {
-                    background-color: #0f172a;
+                    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
                     color: #ffffff;
                     border: none;
-                    border-radius: 12px;
-                    padding: 16px;
+                    border-radius: 14px;
+                    padding: 18px;
                     font-size: 16px;
                     font-weight: 700;
                     cursor: pointer;
-                    transition: all 0.2s ease;
-                    margin-top: 8px;
+                    transition: all 0.3s ease;
+                    margin-top: 12px;
                     width: 100%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
+                    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2), 0 4px 6px -2px rgba(15, 23, 42, 0.1);
                 }
 
                 .submit-button:hover:not(:disabled) {
-                    background-color: #1e293b;
-                    transform: translateY(-2px);
-                    box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2), 0 4px 6px -2px rgba(15, 23, 42, 0.1);
+                    transform: translateY(-3px);
+                    box-shadow: 0 15px 20px -3px rgba(15, 23, 42, 0.3), 0 4px 6px -2px rgba(15, 23, 42, 0.15);
                 }
 
                 .submit-button:active:not(:disabled) {
                     transform: translateY(0);
-                    box-shadow: 0 2px 4px -1px rgba(15, 23, 42, 0.1);
+                    box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.1);
                 }
                 
                 .submit-button:disabled {
-                    background-color: #94a3b8;
+                    background: #94a3b8;
                     cursor: not-allowed;
+                    box-shadow: none;
+                    transform: none;
                 }
 
                 /* Mobile Responsiveness */
                 @media (max-width: 900px) {
                     .login-container {
                         flex-direction: column;
+                        background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+                        position: relative;
                     }
 
                     .left-panel {
-                        padding: 40px 20px 30px;
+                        padding: 40px 20px 100px; /* Extra bottom padding for overlap */
                         border-right: none;
-                        border-bottom: 1px solid #e2e8f0;
+                        background: transparent;
                         flex: none;
+                        min-height: auto;
                     }
 
                     .logo-background {
-                        padding: 30px;
+                        padding: 24px 32px;
                         margin-bottom: 24px;
                         border-radius: 28px;
+                        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
                     }
 
                     .logo {
@@ -441,7 +478,8 @@ export default function Login() {
                     }
 
                     .welcome-text {
-                        font-size: 26px;
+                        font-size: 28px;
+                        color: #102a43;
                     }
 
                     .welcome-subtext {
@@ -449,8 +487,19 @@ export default function Login() {
                     }
 
                     .right-panel {
-                        padding: 40px 24px;
+                        padding: 0 20px 40px;
                         align-items: flex-start;
+                        background: transparent;
+                        margin-top: -70px; /* Overlap effect */
+                        z-index: 20;
+                    }
+
+                    .form-container {
+                        background: #ffffff;
+                        padding: 40px 24px;
+                        border-radius: 28px;
+                        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+                        max-width: 100%;
                     }
 
                     .header {
@@ -458,18 +507,18 @@ export default function Login() {
                     }
                     
                     .icon-wrapper {
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 14px;
-                        margin-bottom: 16px;
+                        width: 56px;
+                        height: 56px;
+                        border-radius: 16px;
+                        margin-bottom: 20px;
                     }
 
                     .title {
                         font-size: 28px;
                     }
-
-                    .form-container {
-                        max-width: 100%;
+                    
+                    .decorative-circle {
+                        opacity: 0.6;
                     }
                 }
                 `}
