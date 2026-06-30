@@ -1,60 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Versatile Business School
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, dynamic, and fully responsive web application built for **Versatile Business School**. This platform serves as the digital front door for the institution, providing prospective students with information about programs, courses, placements, and campus life, while simultaneously offering a robust backend for administrators to manage content, applications, and inquiries.
 
-## About Laravel
+## 🚀 Technology Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project is built using a modern, high-performance web development stack:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Backend Framework:** Laravel (PHP)
+- **Frontend Framework:** React.js
+- **State/Routing Bridge:** Inertia.js
+- **Asset Bundler:** Vite
+- **Styling:** CSS3, SCSS, Bootstrap
+- **Database:** MySQL
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Key Features
 
-## Learning Laravel
+### Public-Facing Website
+- **Dynamic Program Exploration:** Users can browse through various academic programs and specializations (e.g., MBA in Business Analytics, Digital Marketing, Industry Integrated).
+- **Responsive Mobile-First Design:** A fully optimized experience across all devices, featuring custom mobile offcanvas menus and popups.
+- **Interactive Elements:** Smooth animations, Swiper.js carousels for testimonials and banners, and a custom "Back to Top" navigation arrow.
+- **Instant Communication:** Integrated WhatsApp Chat, Tawk.to live chat, and a custom Lead Generation Bot to capture user inquiries instantly.
+- **Dynamic Settings:** All contact information (phone, email, address) and social media links are pulled directly from backend settings, making updates seamless.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Admin Dashboard
+- **Content Management:** Admins can dynamically add, edit, or remove Banners, Programs, Courses, and Testimonials.
+- **Inquiry & Application Management:** Centralized dashboard to view and manage student applications and contact form submissions.
+- **Site Settings Configuration:** Global settings manager to update site logos, favicons, contact details, and third-party script IDs without touching the codebase.
+- **Role-Based Access Control:** Secure authentication system with user roles and permissions.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Installation & Setup
 
-## Laravel Sponsors
+To get this project running on your local machine for development and testing purposes, follow these steps:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prerequisites
+- PHP >= 8.1
+- Composer
+- Node.js & NPM
+- MySQL
 
-### Premium Partners
+### Step-by-Step Guide
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/TECLA-HRMS/Versatile-.git
+   cd Versatile-
+   ```
 
-## Contributing
+2. **Install PHP Dependencies:**
+   ```bash
+   composer install
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Install JavaScript Dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Code of Conduct
+4. **Environment Setup:**
+   Copy the example `.env` file and configure your database credentials:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Run Migrations and Seeders:**
+   *(Ensure your database is created and linked in the .env file before running this)*
+   ```bash
+   php artisan migrate --seed
+   ```
 
-## Security Vulnerabilities
+6. **Link Storage:**
+   Create the symbolic link for uploaded files (logos, banners, gallery images):
+   ```bash
+   php artisan storage:link
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. **Compile Assets:**
+   For local development:
+   ```bash
+   npm run dev
+   ```
+   For production deployment:
+   ```bash
+   npm run build
+   ```
 
-## License
+8. **Start the Development Server:**
+   ```bash
+   php artisan serve
+   ```
+   Your application will now be running at `http://127.0.0.1:8000`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Versatile-
+## 📂 Deployment
+
+When deploying to a live server (like cPanel or Forge):
+1. Pull the latest code from the `main` branch.
+2. Run `composer install --optimize-autoloader --no-dev`.
+3. Run `npm install` and `npm run build` to generate the production assets.
+4. Ensure your server points to the `/public` directory.
+5. If using cPanel, you can simply zip the `public/build` folder locally and extract it directly into your live server's `public` directory.
+
+## 📄 License
+
+This project is proprietary and intended solely for the use of Versatile Business School and its administrators.
