@@ -907,9 +907,9 @@ export default function Index({ banners, courses = [] }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-12">
-                                <div className="row g-5 align-items-start">
+                                <div className="row g-5">
                                     <div className="col-lg-5">
-                                        <div className="rs-tuition-sec-wrapper" style={{ position: 'sticky', top: '120px' }}>
+                                        <div className="rs-tuition-sec-wrapper" style={{ position: 'sticky', top: '120px', zIndex: 10 }}>
                                             <div className="section-title-wrapper">
                                                 <span className="section-subtitle has-dark-grey is-uppercase">
                                                     Work & Study Program
