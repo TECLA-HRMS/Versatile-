@@ -23,7 +23,7 @@ class CheckMaintenanceMode
         try {
             $maintenanceMode = Setting::where('key', 'maintenance_mode')->value('value');
 
-            if ($maintenanceMode === '1') {
+            if ($maintenanceMode == 1) {
                 // If it's an admin route or login, allow it to pass.
                 if (!$request->is('admin*') && !$request->routeIs('admin.*')) {
                     // For API or non-inertia requests we might want to return JSON,

@@ -8,8 +8,7 @@ export default function Settings() {
     const settings = props.settings || {};
     const [activeTab, setActiveTab] = useState('appearance');
     const [showSecretKey, setShowSecretKey] = useState(false);
-    
-    const [maintenanceMode, setMaintenanceMode] = useState(settings.maintenance_mode === '1');
+        const [maintenanceMode, setMaintenanceMode] = useState(String(settings.maintenance_mode) === '1');
     const [maintenanceProcessing, setMaintenanceProcessing] = useState(false);
 
     const toggleMaintenanceMode = () => {

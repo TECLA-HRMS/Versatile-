@@ -135,7 +135,7 @@ export default function Index({ metrics = {}, applicationStats = {}, enquiryStat
                                     background: `${card.color}15`, color: card.color,
                                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                                 }}>
-                                    <i className={card.icon} className="metric-icon" style={{ color: card.color, fontSize: '20px' }}></i>
+                                    <i className={`${card.icon} metric-icon`} style={{ color: card.color, fontSize: '20px' }}></i>
                                 </div>
                             </div>
                             <div className="metric-value" style={{ fontSize: '32px', marginBottom: '4px' }}>

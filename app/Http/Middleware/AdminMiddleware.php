@@ -20,7 +20,7 @@ class AdminMiddleware
             // Check maintenance mode for non-Admin roles (e.g. Editor)
             try {
                 $maintenanceMode = \App\Models\Setting::where('key', 'maintenance_mode')->value('value');
-                if ($maintenanceMode === '1' && !auth()->user()->hasRole('Admin')) {
+                if ($maintenanceMode == 1 && !auth()->user()->hasRole('Admin')) {
                     auth()->logout();
                     $request->session()->invalidate();
                     $request->session()->regenerateToken();
