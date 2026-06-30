@@ -1,12 +1,18 @@
 import React from 'react';
 import AdminLayout from '@/Layouts/AdminLayout';
-import { Head, Link, useForm, router } from '@inertiajs/react';
+import { Head, Link, useForm, router, usePage } from '@inertiajs/react';
 import Swal from 'sweetalert2';
 import Pagination from '@/Components/Pagination';
 import AdminFilterBar from '@/Components/AdminFilterBar';
 
 export default function Index({ users, filters }) {
     const { delete: destroy } = useForm();
+    const { auth } = usePage().props;
+    const permissions = auth.user.permissions || [];
+    
+    const canCreate = permissions.includes('Create Users');
+    const canEdit = permissions.includes('Edit Users');
+    const canDelete = permissions.includes('Delete Users');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.users.index'), newFilters, {
@@ -52,10 +58,12 @@ export default function Index({ users, filters }) {
                     <h2>Users</h2>
                     <p>Manage admin users and their access levels.</p>
                 </div>
-                <Link href={route("admin.users.create")} className="apt-create-btn">
-                    <i className="ri-user-add-line"></i>
-                    <span>Add User</span>
-                </Link>
+                {canCreate && (
+                    <Link href={route("admin.users.create")} className="apt-create-btn">
+                        <i className="ri-user-add-line"></i>
+                        <span>Add User</span>
+                    </Link>
+                )}
             </div>
 
             <AdminFilterBar 
@@ -103,12 +111,19 @@ export default function Index({ users, filters }) {
                                         </td>
                                         <td data-label="Actions" className="text-end">
                                             <div className="apt-actions">
-                                                <Link href={`${window.AppAssetUrl || '/'}admin/users/${user.id}/edit`} className="apt-btn apt-btn-edit" title="Edit">
-                                                    <i className="ri-pencil-line"></i>
-                                                </Link>
-                                                <button onClick={() => handleDelete(user.id)} className="apt-btn apt-btn-delete" title="Delete">
-                                                    <i className="ri-delete-bin-line"></i>
-                                                </button>
+                                                {canEdit && (
+                                                    <Link href={`${window.AppAssetUrl || '/'}admin/users/${user.id}/edit`} className="apt-btn apt-btn-edit" title="Edit">
+                                                        <i className="ri-pencil-line"></i>
+                                                    </Link>
+                                                )}
+                                                {canDelete && (
+                                                    <button onClick={() => handleDelete(user.id)} className="apt-btn apt-btn-delete" title="Delete">
+                                                        <i className="ri-delete-bin-line"></i>
+                                                    </button>
+                                                )}
+                                                {!canEdit && !canDelete && (
+                                                    <span className="text-muted" style={{ fontSize: '0.85rem' }}>No Access</span>
+                                                )}
                                             </div>
                                         </td>
                                     </tr>

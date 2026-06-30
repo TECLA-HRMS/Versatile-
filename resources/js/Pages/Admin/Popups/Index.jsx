@@ -6,7 +6,12 @@ import Pagination from '@/Components/Pagination';
 import AdminFilterBar from '@/Components/AdminFilterBar';
 
 export default function Index({ popups, filters = {} }) {
-    const { flash } = usePage().props;
+    const { flash, auth } = usePage().props;
+    const permissions = auth.user.permissions || [];
+    
+    const canCreate = permissions.includes('Create Popups');
+    const canEdit = permissions.includes('Edit Popups');
+    const canDelete = permissions.includes('Delete Popups');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.popups.index'), newFilters, {
@@ -75,10 +80,12 @@ export default function Index({ popups, filters = {} }) {
                     <h2>Site Popups</h2>
                     <p>Manage popups that appear when users visit the site.</p>
                 </div>
-                <Link href={route('admin.popups.create')} className="apt-create-btn">
-                    <i className="ri-add-line"></i>
-                    <span>Add Popup</span>
-                </Link>
+                {canCreate && (
+                    <Link href={route('admin.popups.create')} className="apt-create-btn">
+                        <i className="ri-add-line"></i>
+                        <span>Add Popup</span>
+                    </Link>
+                )}
             </div>
 
             <AdminFilterBar 
@@ -118,10 +125,11 @@ export default function Index({ popups, filters = {} }) {
                                         </td>
                                         <td data-label="Status">
                                             <button 
-                                                onClick={() => handleToggleStatus(popup.id, popup.is_active)}
+                                                onClick={() => canEdit && handleToggleStatus(popup.id, popup.is_active)}
+                                                disabled={!canEdit}
                                                 className={`btn btn-sm rounded-pill d-inline-flex align-items-center border-0 py-1 px-3 fw-medium ${popup.is_active ? 'bg-success bg-opacity-10 text-success' : 'bg-danger bg-opacity-10 text-danger'}`}
-                                                style={{ fontSize: '12px', transition: 'all 0.2s', letterSpacing: '0.3px' }}
-                                                title="Click to change status"
+                                                style={{ fontSize: '12px', transition: 'all 0.2s', letterSpacing: '0.3px', cursor: canEdit ? 'pointer' : 'default', opacity: canEdit ? 1 : 0.8 }}
+                                                title={canEdit ? "Click to change status" : "Status"}
                                             >
                                                 <span className={`rounded-circle me-2 ${popup.is_active ? 'bg-success' : 'bg-danger'}`} style={{ width: '6px', height: '6px', display: 'inline-block' }}></span>
                                                 {popup.is_active ? 'Active' : 'Inactive'}
@@ -129,12 +137,19 @@ export default function Index({ popups, filters = {} }) {
                                         </td>
                                         <td data-label="Actions" className="text-end">
                                             <div className="apt-actions">
-                                                <Link href={route('admin.popups.edit', popup.id)} className="apt-btn apt-btn-edit" title="Edit">
-                                                    <i className="ri-pencil-line"></i>
-                                                </Link>
-                                                <button onClick={() => handleDelete(popup.id)} className="apt-btn apt-btn-delete" title="Delete">
-                                                    <i className="ri-delete-bin-line"></i>
-                                                </button>
+                                                {canEdit && (
+                                                    <Link href={route('admin.popups.edit', popup.id)} className="apt-btn apt-btn-edit" title="Edit">
+                                                        <i className="ri-pencil-line"></i>
+                                                    </Link>
+                                                )}
+                                                {canDelete && (
+                                                    <button onClick={() => handleDelete(popup.id)} className="apt-btn apt-btn-delete" title="Delete">
+                                                        <i className="ri-delete-bin-line"></i>
+                                                    </button>
+                                                )}
+                                                {!canEdit && !canDelete && (
+                                                    <span className="text-muted" style={{ fontSize: '0.85rem' }}>No Access</span>
+                                                )}
                                             </div>
                                         </td>
                                     </tr>
