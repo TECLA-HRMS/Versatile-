@@ -907,43 +907,46 @@ export default function Index({ banners, courses = [] }) {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-12">
-                                <div className="rs-tuition-wrapper" style={{ alignItems: 'flex-start' }}>
-                                    <div className="rs-tuition-sec-wrapper" style={{ position: 'sticky', top: '120px' }}>
-                                        <div className="section-title-wrapper">
-                                            <span className="section-subtitle has-dark-grey is-uppercase">
-                                                Work & Study Program
-                                            </span>
-                                            <h2 className="section-title-two mb-10" style={{ fontSize: '27px', lineHeight: 1.2 }}>2-Year MBA with Opportunity to Work
-                                            </h2>
-                                            <p className="section-desc mt-2">Specializations: <strong>Industry Integrated | Business Analytics | Digital Marketing</strong></p>
-                                            <p className="section-desc mt-2" style={{ color: '#1e293b', fontWeight: 500 }}>
-                                                Gain valuable two-year work experience while completing your MBA! Recover between 75% and 100% of the amount paid in the first 2 years.
-                                            </p>
-                                        </div>
-                                        <div className="rs-tuition-btn mt-4">
-                                            <Link className="rs-btn has-icon has-theme-yellow hover-blue" href={assets('program')}>
-                                                <span className="btn-text-wrap">
-                                                    <span className="text-default">Explore Programs</span>
-                                                    <span className="text-hover">Explore Programs</span>
+                                <div className="row g-5 align-items-start">
+                                    <div className="col-lg-5">
+                                        <div className="rs-tuition-sec-wrapper" style={{ position: 'sticky', top: '120px' }}>
+                                            <div className="section-title-wrapper">
+                                                <span className="section-subtitle has-dark-grey is-uppercase">
+                                                    Work & Study Program
                                                 </span>
-                                                <span className="icon-box has-rotate">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15">
-                                                        <path d="M10.5 7.5C10.5 8.32843 9.82843 9 9 9C8.17157 9 7.5 8.32843 7.5 7.5C7.5 6.67157 8.17157 6 9 6C9.82843 6 10.5 6.67157 10.5 7.5Z"></path>
-                                                        <path d="M10.5 13.5C10.5 14.3284 9.82843 15 9 15C8.17157 15 7.5 14.3284 7.5 13.5C7.5 12.6716 8.17157 12 9 12C9.82843 12 10.5 12.6716 10.5 13.5Z"></path>
-                                                        <path d="M3 7.5C3 8.32843 2.32843 9 1.5 9C0.671573 9 0 8.32843 0 7.5C0 6.67157 0.671573 6 1.5 6C2.32843 6 3 6.67157 3 7.5Z"></path>
-                                                        <path d="M18 7.5C18 8.32843 17.3284 9 16.5 9C15.6716 9 15 8.32843 15 7.5C15 6.67157 15.6716 6 16.5 6C17.3284 6 18 6.67157 18 7.5Z"></path>
-                                                        <path d="M10.5 1.5C10.5 2.32843 9.82843 3 9 3C8.17157 3 7.5 2.32843 7.5 1.5C7.5 0.671573 8.17157 0 9 0C9.82843 0 10.5 0.671573 10.5 1.5Z"></path>
-                                                    </svg>
-                                                </span>
-                                            </Link>
-                                        </div>
-                                        <div className="rs-tuition-thumb mt-3">
-                                            <img src={assets('assets/images/tuition/tuition-thumb-01.webp')} alt="image" loading="lazy" style={{ borderRadius: '16px', maxHeight: '250px', objectFit: 'cover', width: '100%' }} />
+                                                <h2 className="section-title-two mb-10" style={{ fontSize: '27px', lineHeight: 1.2 }}>2-Year MBA with Opportunity to Work
+                                                </h2>
+                                                <p className="section-desc mt-2">Specializations: <strong>Industry Integrated | Business Analytics | Digital Marketing</strong></p>
+                                                <p className="section-desc mt-2" style={{ color: '#1e293b', fontWeight: 500 }}>
+                                                    Gain valuable two-year work experience while completing your MBA! Recover between 75% and 100% of the amount paid in the first 2 years.
+                                                </p>
+                                            </div>
+                                            <div className="rs-tuition-btn mt-4">
+                                                <Link className="rs-btn has-icon has-theme-yellow hover-blue" href={assets('program')}>
+                                                    <span className="btn-text-wrap">
+                                                        <span className="text-default">Explore Programs</span>
+                                                        <span className="text-hover">Explore Programs</span>
+                                                    </span>
+                                                    <span className="icon-box has-rotate">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15">
+                                                            <path d="M10.5 7.5C10.5 8.32843 9.82843 9 9 9C8.17157 9 7.5 8.32843 7.5 7.5C7.5 6.67157 8.17157 6 9 6C9.82843 6 10.5 6.67157 10.5 7.5Z"></path>
+                                                            <path d="M10.5 13.5C10.5 14.3284 9.82843 15 9 15C8.17157 15 7.5 14.3284 7.5 13.5C7.5 12.6716 8.17157 12 9 12C9.82843 12 10.5 12.6716 10.5 13.5Z"></path>
+                                                            <path d="M3 7.5C3 8.32843 2.32843 9 1.5 9C0.671573 9 0 8.32843 0 7.5C0 6.67157 0.671573 6 1.5 6C2.32843 6 3 6.67157 3 7.5Z"></path>
+                                                            <path d="M18 7.5C18 8.32843 17.3284 9 16.5 9C15.6716 9 15 8.32843 15 7.5C15 6.67157 15.6716 6 16.5 6C17.3284 6 18 6.67157 18 7.5Z"></path>
+                                                            <path d="M10.5 1.5C10.5 2.32843 9.82843 3 9 3C8.17157 3 7.5 2.32843 7.5 1.5C7.5 0.671573 8.17157 0 9 0C9.82843 0 10.5 0.671573 10.5 1.5Z"></path>
+                                                        </svg>
+                                                    </span>
+                                                </Link>
+                                            </div>
+                                            <div className="rs-tuition-thumb mt-3">
+                                                <img src={assets('assets/images/tuition/tuition-thumb-01.webp')} alt="image" loading="lazy" style={{ borderRadius: '16px', maxHeight: '250px', objectFit: 'cover', width: '100%' }} />
+                                            </div>
                                         </div>
                                     </div>
 
                                     {/* Right side features */}
-                                    <div className="rs-tuition-content-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingLeft: '20px' }}>
+                                    <div className="col-lg-7">
+                                        <div className="rs-tuition-content-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
                                         <div className="rs-tuition-item" style={{ padding: '32px 36px', borderRadius: '16px', boxShadow: '0 10px 30px rgba(0,0,0,0.04)', border: '1px solid #f1f5f9', background: '#ffffff', transition: 'transform 0.3s ease' }} onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'} onMouseOut={(e) => e.currentTarget.style.transform = 'none'}>
                                             <div className="rs-tuition-top mb-3">
@@ -1020,8 +1023,8 @@ export default function Index({ banners, courses = [] }) {
                                                     Learn directly from top business leaders, CEOs, and corporate veterans who bring decades of invaluable firsthand industry experience to the classroom.
                                                 </p>
                                             </div>
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
