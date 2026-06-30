@@ -9,9 +9,9 @@ export default function Index({ popups, filters = {} }) {
     const { flash, auth } = usePage().props;
     const permissions = auth.user.permissions || [];
     
-    const canCreate = permissions.includes('Create Popups');
-    const canEdit = permissions.includes('Edit Popups');
-    const canDelete = permissions.includes('Delete Popups');
+    const canCreate = permissions.includes('create popups');
+    const canEdit = permissions.includes('edit popups');
+    const canDelete = permissions.includes('delete popups');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.popups.index'), newFilters, {

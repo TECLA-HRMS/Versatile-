@@ -10,9 +10,9 @@ export default function Index({ programs, filters = {} }) {
     const { auth } = usePage().props;
     const permissions = auth.user.permissions || [];
     
-    const canCreate = permissions.includes('Create Programs');
-    const canEdit = permissions.includes('Edit Programs');
-    const canDelete = permissions.includes('Delete Programs');
+    const canCreate = permissions.includes('create programs');
+    const canEdit = permissions.includes('edit programs');
+    const canDelete = permissions.includes('delete programs');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.programs.index'), newFilters, {

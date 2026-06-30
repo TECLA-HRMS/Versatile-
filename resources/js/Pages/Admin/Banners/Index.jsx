@@ -9,9 +9,9 @@ export default function Index({ banners, filters = {} }) {
     const { flash, auth } = usePage().props;
     const permissions = auth.user.permissions || [];
     
-    const canCreate = permissions.includes('Create Banners');
-    const canEdit = permissions.includes('Edit Banners');
-    const canDelete = permissions.includes('Delete Banners');
+    const canCreate = permissions.includes('create banners');
+    const canEdit = permissions.includes('edit banners');
+    const canDelete = permissions.includes('delete banners');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.banners.index'), newFilters, {

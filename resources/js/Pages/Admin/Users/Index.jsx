@@ -10,9 +10,9 @@ export default function Index({ users, filters }) {
     const { auth } = usePage().props;
     const permissions = auth.user.permissions || [];
     
-    const canCreate = permissions.includes('Create Users');
-    const canEdit = permissions.includes('Edit Users');
-    const canDelete = permissions.includes('Delete Users');
+    const canCreate = permissions.includes('create users');
+    const canEdit = permissions.includes('edit users');
+    const canDelete = permissions.includes('delete users');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.users.index'), newFilters, {

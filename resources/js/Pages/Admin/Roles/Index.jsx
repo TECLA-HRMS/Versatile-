@@ -9,9 +9,9 @@ export default function Index({ roles }) {
     const { auth } = usePage().props;
     const permissions = auth.user.permissions || [];
     
-    const canCreate = permissions.includes('Create Roles');
-    const canEdit = permissions.includes('Edit Roles');
-    const canDelete = permissions.includes('Delete Roles');
+    const canCreate = permissions.includes('create roles');
+    const canEdit = permissions.includes('edit roles');
+    const canDelete = permissions.includes('delete roles');
 
     const handleDelete = (id) => {
         Swal.fire({

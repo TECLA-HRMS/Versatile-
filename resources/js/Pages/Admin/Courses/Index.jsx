@@ -10,9 +10,9 @@ export default function Index({ courses, programs = [], filters = {} }) {
     const { auth } = usePage().props;
     const permissions = auth.user.permissions || [];
     
-    const canCreate = permissions.includes('Create Courses');
-    const canEdit = permissions.includes('Edit Courses');
-    const canDelete = permissions.includes('Delete Courses');
+    const canCreate = permissions.includes('create courses');
+    const canEdit = permissions.includes('edit courses');
+    const canDelete = permissions.includes('delete courses');
 
     const handleFilter = (newFilters) => {
         router.get(route('admin.courses.index'), newFilters, {
