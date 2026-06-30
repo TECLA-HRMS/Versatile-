@@ -1,0 +1,132 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.22 Section Title  
+/*----------------------------------------*/
+
+.section{
+	&-title{
+		color: var(--rs-title-primary);
+		&.is-white{
+			color: var(--rs-white);
+		}
+		&.has-theme-blue{
+			color: var(--rs-title-tertiary);
+		}
+		&-two{
+			font-size: 46px;
+			font-family: "Prata", serif;
+			font-weight: 600;
+			color: #021E40;
+			line-height: 1.39;
+			@media #{$lg}{
+				font-size: 42px;
+			}
+			@media #{$md}{
+				font-size: 37px;
+			}
+			@media #{$sm}{
+				font-size: 32px;
+			}
+			@media #{$xs}{
+				font-size: 26px;
+			}
+			&.is-white{
+				color: var(--rs-white);
+			}
+		}
+	}
+	&-subtitle{
+		font-size: 15px;
+		font-weight: 600;
+		line-height: 28px;
+		color: var( --rs-title-primary);
+		margin-bottom: 10px;
+  		display: inline-block;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		svg{
+			width: 24px;
+			height: 24px;
+		}
+		&.is-white{
+			color: var(--rs-white);
+			svg{
+				path{
+					fill: var(--rs-white);
+				}
+			}
+		}
+		&.has-theme-blue{
+			color: var(--rs-title-tertiary);
+			svg{
+				path{
+					fill: var(--rs-theme-blue);
+				}
+			}
+		}
+		&.has-theme-red{
+			svg{
+				path{
+					fill: var(--rs-theme-red);
+				}
+			}
+			@media #{$xs}{
+				font-size: 13px;
+			}
+		}
+		&.has-theme-green{
+			svg{
+				path{
+					fill: var(--rs-theme-green);
+				}
+			}
+			@media #{$xs}{
+				font-size: 13px;
+			}
+		}
+		&.has-theme-green-two{
+			svg{
+				path{
+					fill: var(--rs-theme-green-two);
+				}
+			}
+			@media #{$xs}{
+				font-size: 13px;
+			}
+		}
+		&.has-theme-yellow{
+			color: var(--rs-theme-yellow);
+			svg{
+				path{
+					fill: var(--rs-theme-yellow);
+				}
+			}
+		}
+		&.has-theme-cyan{
+			svg{
+				path{
+					fill: var(--rs-theme-light-cyan);
+				}
+			}
+			@media #{$xs}{
+				font-size: 13px;
+			}
+		}
+		&.is-uppercase{
+			text-transform: uppercase;
+		}
+		&.is-text-red{
+			color: var(--rs-theme-red);
+		}
+		&.has-dark-grey{
+			color: var(--rs-text-primary);
+		}
+	}
+	&-desc{
+		&.is-white{
+			color: rgba(255, 255, 255, 0.8);
+		}
+	}
+}

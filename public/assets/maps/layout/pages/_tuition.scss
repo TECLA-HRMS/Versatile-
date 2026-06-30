@@ -1,0 +1,354 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.43 tuition
+/*----------------------------------------*/
+
+.rs-tuition{
+    &-one{
+        position: relative;
+        z-index: 1;
+        .rs-tuition-shape-one{
+            position: absolute;
+            top: 130px;
+            inset-inline-end: 80px;
+            animation: rs-rotate-anim 3s linear 0s infinite alternate;
+            @media #{$laptop}{
+                display: none;
+            }
+        }
+        .rs-tuition-shape-two{
+            position: absolute;
+            bottom: 0;
+            inset-inline-start: 0px;
+            @media #{$lg}{
+                display: none;
+            }
+        }
+        .section-desc{
+            margin-bottom: 20px;
+        }
+        .rs-tuition-thumb{
+            img{
+                width: 100%;
+                border-radius: 20px;
+            }
+        }
+        .rs-tuition-wrapper {
+            display: grid;
+            grid-template-columns: 420px auto;
+            gap: 30px 80px;
+            @media #{$laptop}{
+                gap: 30px 30px;
+            }
+            @media #{$lg}{
+                grid-template-columns: 280px auto;
+            }
+            @media #{$md}{
+                grid-template-columns: auto;
+            }
+        }
+        .rs-tuition-item{
+            background: var(--rs-white);
+            border-radius: 12px;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            padding-inline-start: 35px;
+            padding-inline-end: 35px;
+            &:nth-child(3){
+                @media  #{$sm}{
+                    order: 4;
+                }
+            }
+            @media #{$lg}{
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-inline-start: 25px;
+                padding-inline-end: 25px;
+            }
+            &.has-theme-red{
+                background: var(--rs-theme-red-two);
+                .rs-tuition-title{
+                    color: var(--rs-white);
+                    border-color: rgba(255, 255, 255, 0.1);
+                }
+                .rs-tuition-inner-title{
+                    color: var(--rs-white);
+                }
+                .rs-tuition-label{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+                .rs-tuition-price{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+            &.has-theme-cyan{
+                background: var(--rs-theme-cyan);
+                .rs-tuition-title{
+                    color: var(--rs-white);
+                    border-color: rgba(255, 255, 255, 0.1);
+                }
+                .rs-tuition-inner-title{
+                    color: var(--rs-white);
+                }
+                .rs-tuition-label{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+                .rs-tuition-price{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+            &.has-theme-blue-two{
+                background: var(--rs-theme-blue-two);
+                .rs-tuition-title{
+                    color: var(--rs-white);
+                    border-color: rgba(255, 255, 255, 0.1);
+                }
+                .rs-tuition-inner-title{
+                    color: var(--rs-white);
+                }
+                .rs-tuition-label{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+                .rs-tuition-price{
+                    color: rgba(255, 255, 255, 0.8);
+                }
+            }
+        }
+        .rs-tuition-info-item{
+            &:first-child{
+                margin-top: 27px;
+                margin-bottom: 22px;
+            }
+        }
+        .rs-tuition-list{
+            .rs-tuition-list-item{
+                list-style: none;
+            }
+        }
+        .rs-tuition-title {
+            display: inline-block;
+            border-bottom: 1px solid var(--rs-border-primary);
+        }
+        .rs-tuition-inner-title {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+        .rs-tuition-label {
+	        font-size: 13px;
+        }
+        .rs-tuition-price{
+            font-size: 13px;
+        }
+        .rs-tuition-content-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 30px;
+            @media #{$sm}{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .rs-tuition-btn {
+	        margin-bottom: 50px;
+        }
+        &.has-theme-green-two{
+            .rs-tuition-shape{
+                position: absolute;
+                bottom: 0;
+                inset-inline-end: 110px;
+                @media #{$desktop}{
+                    inset-inline-end: 30px;
+                }
+                @media #{$lg}{
+                    inset-inline-end: 0px;
+                }
+                @media #{$xs}{
+                    display: none;
+                }
+            }
+            .rs-tuition-wrapper{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                gap: 30px;
+                @media #{$md}{
+                    grid-template-columns: repeat(2,1fr);
+                }
+                @media #{$sm}{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+            .rs-tuition-item{
+                background: var(--rs-bg-primary);
+                &.has-theme-green-two{
+                    background: var(--rs-theme-green-two);
+                    .rs-tuition-title{
+                        color: var(--rs-white);
+                        border-color: rgba(255, 255, 255, 0.1);
+                    }
+                    .rs-tuition-inner-title{
+                        color: var(--rs-white);
+                    }
+                    .rs-tuition-label{
+                        color: rgba(255, 255, 255, 0.8);
+                    }
+                    .rs-tuition-price{
+                        color: rgba(255, 255, 255, 0.8);
+                    }
+                }
+            }
+        }
+    }
+    &-two{
+        .rs-tuition-wrapper{
+            background: var(--rs-white);
+            border-radius: 12px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 525px auto;
+            gap: 30px 50px;
+            align-items: center;
+            @media #{$xl}{
+                grid-template-columns: repeat(2,1fr);
+                gap: 30px 30px;
+            }
+            @media #{$lg}{
+                align-items: start;
+            }
+            @media #{$md}{
+                grid-template-columns: repeat(1,1fr);
+            }
+            @media #{$xs}{
+                padding: 20px;
+            }
+        }
+        .rs-tuition-thumb{
+            @media #{$lg}{
+                position: sticky;
+                top: 110px;
+            }
+            @media #{$md}{
+                position: relative;
+                top: unset;
+            }
+            img{
+                width: 100%;
+                border-radius: 8px;
+            }
+        }
+        .rs-tuition-desc{
+            margin-top: 20px;
+            margin-bottom: 30px;
+            max-width: 622px;
+        }
+    }
+    &-three{
+        .rs-tuition-tab-wrapper{
+            .nav-pills{
+                display: flex;
+                justify-content: start;
+                gap: 20px;
+                margin-bottom: 30px;
+                margin-top: 35px;
+                @media #{$md}{
+                    justify-content: center;
+                    gap: 10px;
+                }
+            }
+            .nav-link{
+                background: var(--rs-white);
+                font-weight: 500;
+                padding-bottom: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                position: relative;
+                border-radius: 0px;
+                border-bottom: 2px solid var(--rs-white);
+                color: var(--rs-text-primary);
+                font-size: 17px;
+                transition: all 0.3s ease-in-out;
+                padding: 15px 20px;
+                @media #{$md}{
+                    padding: 15px 15px;
+                    font-size: 15px;
+                }
+                &.active{
+                    color: var(--rs-theme-blue);
+                    border-color: var(--rs-theme-blue);
+                    .rs-tuition-tab-icon{
+                        svg{
+                            path{
+                                fill: var(--rs-theme-blue);
+                            }
+                        }
+                    }
+                }
+                &:hover{
+                    color: var(--rs-theme-blue);
+                    border-color: var(--rs-theme-blue);
+                    .rs-tuition-tab-icon{
+                        svg{
+                            path{
+                                fill: var(--rs-theme-blue);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .rs-tuition-desc {
+	        margin-top: 20px;
+        }
+        .rs-tuition-tab-icon{
+            svg{
+                path{
+                    transition: .3s;
+                }
+            }
+        }
+        .rs-tuition-tab-anim {
+            .tab-pane.active {
+                .rs-tuition-table-item {
+                    -webkit-animation: slide-down 5s ease-out;
+                    animation: slide-down 5s ease-out;
+                }
+            }
+        }
+        .rs-tuition-table-inner {
+            background-color: var(--rs-white);
+            border: 1px solid var(--rs-border-primary);
+            width: max-content;
+            min-width: 100%;
+            thead{
+                background-color: var(--rs-theme-blue);
+                color: var(--rs-white);
+            }
+            th{
+                padding: 15px 24px;
+                font-weight: 600;
+                font-size: 15px;
+                font-family: var(--rs-ff-title);
+                border-inline-end: 1px solid var(--rs-border-tertiary);
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+            }
+            td{
+                padding: 15px 24px;
+                vertical-align: middle;
+                border: 1px solid var(--rs-border-primary);
+                font-size: 15px;
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+                a{
+                    &:hover{
+                        color: var(--rs-theme-blue);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.5 award css
+/*----------------------------------------*/
+
+.rs-award{
+    &-one{
+        .rs-award-wrapper {
+            display: grid;
+            grid-template-columns: auto 745px;
+            gap: 30px;
+            @media #{$laptop}{
+                grid-template-columns: auto 700px;
+            }
+            @media #{$lg}{
+                grid-template-columns: auto 650px;
+            }
+            @media #{$md}{
+                grid-template-columns: auto;
+                gap: 300px 30px;
+            }
+        }
+        .rs-award-list-item{
+            justify-content: space-between;
+            padding: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            &:not(:last-child){
+                border-bottom: 1px solid var(--rs-border-primary);
+            }
+        }
+        .rs-award-list-year {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--rs-title-tertiary);
+            font-family: var(--rs-ff-title);
+        }
+        .rs-award-list{
+            background: var(--rs-white);
+            border-radius: 10px;
+        }
+        .rs-badge-text {
+            background-color: var(--rs-white);
+            padding: 7px 16px 7px 16px;
+            border-radius: 100px;
+            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .rs-award-thumb-wrapper{
+            position: relative;
+        }
+        .rs-award-thumb{
+            position: absolute;
+            inset-inline-start: 229px;
+            top: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .5s ease, transform .5s ease;
+            @media #{$lg}{
+                inset-inline-start: 0px;
+                top: 30px;
+            }
+            &.active{
+                opacity: 1;
+                transform: translateY(0);
+            }
+            img{
+                width: 200px;
+                @media #{$md}{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

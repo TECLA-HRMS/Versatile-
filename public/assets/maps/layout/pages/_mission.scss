@@ -1,0 +1,93 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.26 mission
+/*----------------------------------------*/
+
+.rs-mission{
+    &-one{
+        .rs-mission-wrapper {
+            display: grid;
+            grid-template-columns: 410px auto;
+            gap: 30px 60px;
+            align-items: start;
+            @media #{$laptop}{
+                grid-template-columns: 350px auto;
+                gap: 30px 30px;
+            }
+            @media #{$lg}{
+                grid-template-columns: 300px auto;
+            }
+            @media #{$md}{
+                grid-template-columns: auto;
+            }
+        }
+        .rs-counter-number,
+        .prefix {
+            font-size: 48px;
+            color: var(--rs-title-tertiary);
+            font-weight: 600;
+            line-height: .9;
+            font-family: var(--rs-ff-title);
+            @media #{$laptop}{
+                font-size: 30px;
+            }
+        }
+        .rs-counter-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .rs-mission-sec-icon{
+            img{
+                width: 68px;
+            }
+        }
+        .rs-mission-desc-wrapper{
+            position: relative;
+            z-index: 1;
+            border-inline-start: 1px solid var(--rs-border-primary);
+            padding-inline-start: 35px;
+            @media #{$mobile}{
+                padding-inline-start: 25px;
+            }
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                inset-inline-start: -8px;
+                width: 16px;
+                height: 16px;
+                background-color: var(--rs-theme-blue);
+                border: 3px solid rgba(255, 255, 255, 0.98);
+                border-radius: 50%;
+                z-index: 1;
+                box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.3);
+            }
+        }
+        .rs-mission-thumb{
+            margin-top: 38px;
+            img{
+                width: 100%;
+                border-radius: 12px;
+            }
+        }
+        .rs-mission-title {
+            color: var(--rs-title-tertiary);
+            margin-bottom: 15px;
+        }
+        .desc-one {
+	        margin-bottom: 20px;
+        }
+        .section-title {
+            color: var(--rs-title-tertiary);
+            line-height: 1.2;
+            margin-top: 32px;
+            margin-bottom: 10px;
+        }
+        .section-desc {
+	        max-width: 290px;
+        }
+    }
+}
+

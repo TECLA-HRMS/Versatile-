@@ -1,0 +1,43 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.36 requirement css
+/*----------------------------------------*/
+
+.rs-requirement{
+    &-one{
+        .rs-requirement-thumb{
+            img{
+                width: 100%;
+                border-radius: 16px;
+            }
+        }
+        .rs-requirement-badge{
+            background: var(--rs-theme-blue);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            width: 132px;
+            height: 132px;
+            position: absolute;
+            left: 50%;
+            z-index: 1;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            img{
+                width: 90px;
+            }
+        }
+        .rs-requirement-thumb-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            gap: 30px 35px;
+            margin-bottom: 30px;
+            @media #{$sm}{
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

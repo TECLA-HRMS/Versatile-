@@ -1,0 +1,223 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  3.2.5 Sidebar css
+/*----------------------------------------*/
+
+.rs-sidebar-sticky {
+    position: sticky;
+    top: 110px;
+    @media #{$md}{
+        position: relative;
+        top: unset;
+    }
+}
+
+.sidebar{
+    &-widget{
+        position: relative;
+        background: var(--rs-white);
+        padding: 30px 30px 38px 30px;
+        border-radius: 8px;
+        @media #{$laptop}{
+           padding: 10px 20px 20px 20px; 
+        }
+        @media #{$md}{
+             padding: 20px 30px 30px 30px;
+        }
+         @media #{$mobile}{
+             padding: 10px 20px 20px 20px;
+        }
+        &.widget-categories{
+            ul{
+                li{
+                    list-style: none;
+                    &:not(:last-child){
+                        border-bottom: 1px solid rgba(62, 62, 62, 0.1);
+                        padding-bottom: 10px;
+                        margin-bottom: 10px;
+                    }
+                    a{
+                          cursor: pointer;
+                          transition:  all 0.3s ease 0s;
+                          position: relative;
+                        &:hover{
+                            color: var(--rs-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+        &.widget-categories{
+            padding: 30px 30px 30px 30px;
+            @media #{$lg}{
+                padding: 20px 20px 20px 20px;
+            }
+            &.has-content-none{
+                &::before{
+                    content: none;
+                }
+            }
+            ul{
+                li{
+                    list-style: none;
+                    &:not(:last-child){
+                        border-bottom:1px solid rgba(2, 1, 1, 0.09) ;
+                        padding-bottom: 12px;
+                        margin-bottom: 12px;
+                    }
+                    a{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        &:hover{
+                            color: var(--rs-theme-yellow);
+                        }
+                    }
+                    i{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        &.widget-price-filter{
+            overflow-x: clip;
+        }
+    }
+    &-search-input{
+        position: relative;
+        input{
+            padding-inline-end: 50px;
+            background: var(--rs-white);
+            border: 1px solid #ddd;
+            height: 60px;
+        }
+        button{
+            position: absolute;
+            top: 50%;
+            inset-inline-end: 25px;
+            color: var(--rs-black);
+            font-size: 16px;
+            transform: translateY(-50%);
+            &:hover{
+                color: var(--rs-theme-primary);
+            }
+        }
+    }
+    &-widget-title{
+        margin-bottom: 30px;
+        position: relative;
+        font-size: 22px;
+        padding-bottom: 12px;
+        color: var(--rs-title-tertiary);
+        &::before{
+            content: "";
+            width: 20px;
+            height: 2px;
+            position: absolute;
+            inset-inline-start: 0px;
+            bottom: 0;
+            background: #2B3944;
+        }
+        &::after{
+            content: "";
+            width: 65px;
+            height: 2px;
+            position: absolute;
+            inset-inline-start: 30px;
+            bottom: 0;
+            background: var(--rs-theme-yellow);;
+        }
+        &.has-large{
+            font-size: 36px;
+            @media #{$xs}{
+                font-size: 30px;
+            }
+        }
+        &.has-border{
+            position: relative;
+            margin-bottom: 40px;
+            border-inline-start: 2px solid var(--rs-theme-primary);
+            padding-inline-start: 20px;
+        }
+    }
+    &-blog-item{
+        display: flex;
+        gap: 20px;
+        @media #{$mobile}{
+            display: grid;
+            grid-template-columns: auto;
+        }
+        &:not(:last-child){
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--rs-border-primary);
+            padding-bottom: 20px;
+        }
+        &:hover{
+            .sidebar-blog-thumb{
+                img{
+                    transform: scale3d(1.07, 1.07, 1.07);
+                }
+            }
+        }
+    }
+    &-blog-thumb{
+        overflow: hidden;
+        flex: 0 0 auto;
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+        @media #{$mobile}{
+            width: 100%;
+            height: 100%
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: all 1s cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+    &-blog-title{
+        font-size: 16px;
+        @media #{$lg}{
+            font-size: 14px;
+        }
+        @media #{$md}{
+            font-size: 16px;
+        }
+        a{
+            &:hover{
+                color: var(--rs-theme-yellow);
+            }
+        }
+    }
+    &-blog-meta{
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+         @media #{$lg}{
+            font-size: 14px;
+        }
+        @media #{$md}{
+            font-size: 16px;
+        }
+        i{
+            color: var(--rs-theme-primary);
+        }
+    }
+    &-social{
+        a{
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(116,116,117,.141);
+            background: transparent;
+            &:hover{
+                border-color:var(--rs-theme-primary) ;
+            }
+        }
+    }
+}

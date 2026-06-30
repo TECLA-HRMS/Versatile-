@@ -1,0 +1,117 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1.4 banner style 4
+/*----------------------------------------*/
+
+
+.rs-banner {
+    &-four {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        .rs-banner-video{
+            position: absolute;
+            top: 0;
+            left: 0;
+            @media #{$md}{
+                height: 540px;
+            }
+            &::before{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background-image: radial-gradient(at center center, #000000 0%, #000000 69%);
+                opacity: .5;
+                top: 0;
+                left: 0;
+            }
+            video{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .rs-banner-wrapper {
+            position: relative;
+            z-index: 1;
+            padding-top: 230px;
+            padding-bottom: 245px;
+            text-align: center;
+            @media #{$laptop}{
+                padding-top: 180px;
+                padding-bottom: 200px;
+            }
+            @media #{$xl}{
+                padding-top: 150px;
+                padding-bottom: 170px;
+            }
+            @media #{$lg}{
+                padding-top: 120px;
+                padding-bottom: 120px;
+            }
+            @media #{$md}{
+                padding-top: 100px;
+                padding-bottom: 100px;
+            }
+        }
+        .rs-banner-logo{
+            margin-bottom: 20px;
+            img{
+                width: 80px;
+            }
+        }
+        .rs-banner-title {
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--rs-white);
+            line-height: 1.1;
+            @media #{$laptop}{
+                font-size: 65px;
+            }
+            @media #{$md}{
+                font-size: 50px;
+            }
+            @media #{$sm}{
+                font-size: 45px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+            }
+        }
+        .rs-banner-content-wrapper{
+            position: relative;
+            z-index: 2;
+        }
+        .rs-banner-content-wrapper {
+            display: grid;
+            grid-template-columns: 600px auto;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 250px;
+            @media #{$large_laptop}{
+                margin-top: 200px;
+            }
+            @media #{$laptop}{
+                margin-top: 150px;
+            }
+            @media #{$lg}{
+                margin-top: 130px;
+            }
+            @media #{$md}{
+                margin-top: 90px;
+                grid-template-columns: 500px auto;
+            }
+            @media #{$sm}{
+                grid-template-columns: auto;
+                text-align: center;
+                margin-top: 70px;
+            }
+            @media #{$xs}{
+                margin-top: 50px;
+            }
+        }
+    }
+}

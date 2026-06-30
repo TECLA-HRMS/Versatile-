@@ -1,0 +1,50 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.4 Back to top
+/*----------------------------------------*/
+
+#backtotop-wrap {
+	text-align: center;
+	bottom: 20px;
+	cursor: pointer;
+	display: none;
+	position: fixed;
+	inset-inline-end: 20px;
+	z-index: 10;
+	border-radius: 50%;
+	background: var(--rs-theme-blue);
+	padding: 1px;
+	transition: all linear 0.5s;
+	box-shadow: 0px 8px 16px rgba(3, 4, 28, 0.3);
+	.scrollprogress{
+		.progress-circle{
+			transition: stroke-dashoffset 0.5s ease;
+			transition: stroke 0.5s ease;
+		}
+	}
+	.arrowicon{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+	svg{
+		path{
+			fill: var(--rs-white);
+				transition: all linear 0.5s;
+		}
+	}
+  }
+
+  .rs-backtotop{
+	&.has-theme-cyan{
+		background: var(--rs-theme-light-cyan) !important;
+	}
+	&.has-theme-red{
+		background: var(--rs-theme-red) !important;
+	}
+	&.has-theme-green{
+		background: var(--rs-theme-green) !important;
+	}
+  }

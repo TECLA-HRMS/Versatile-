@@ -1,0 +1,63 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.18 post tag
+/*----------------------------------------*/
+
+.rs-post-tag {
+    .post-tag {
+        background: var(--rs-theme-primary);
+        color: var(--rs-white);
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px 5px 10px;
+        height: 21px;
+        border-radius: 0 100px 100px 70px;
+        font-weight: 500;
+        font-size: 12px;
+        text-transform: uppercase;
+        line-height: 22px;
+        &.is-yellow {
+            background-color: var(--rs-yellow);
+        }
+        &.is-green {
+            background-color: var(--rs-green);
+        }
+        &.is-pink {
+            background-color: var(--rs-pink);
+        }
+        &.is-red {
+            background: #FF3A3A;
+        }
+    }
+    &-two {
+        .post-tag {
+            position: relative;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--rs-text-primary);
+            padding-inline-start: 16px;
+            &:hover{
+                color: var(--rs-theme-primary);
+            }
+            &::before {
+                position: absolute;
+                content: "";
+                width: 8px;
+                height: 8px;
+                inset-inline-start: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(246, 156, 0, 0.5);
+                border-radius: 50%;
+            }
+            &.is-white{
+                color: var(--rs-white);
+                &:hover{
+                    color: var(--rs-theme-primary);
+                }
+            }
+        }
+    }
+}

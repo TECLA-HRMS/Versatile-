@@ -1,0 +1,64 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.24 libraries css|
+/*----------------------------------------*/
+
+.rs-libraries {
+    &-one {
+        position: relative;
+        .rs-libraries-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            margin-top: 30px;
+            @media #{$md}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-libraries-item {
+            border-radius: 12px;
+            background: var(--rs-white);
+            padding-top: 12px;
+            padding-bottom: 30px;
+            padding-inline: 12px;
+            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.06);
+            &:hover {
+                .rs-libraries-thumb {
+                    img {
+                        transform: scale3d(1.1, 1.1, 1);
+                    }
+                }
+            }
+        }
+        .rs-libraries-thumb {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                transition: all 0.8s ease;
+            }
+        }
+        .rs-libraries-title {
+            margin-bottom: 8px;
+            color: var(--rs-title-tertiary);
+            a {
+                &:hover {
+                    color: var(--rs-theme-yellow);
+                }
+            }
+        }
+        .rs-libraries-content {
+            padding-inline-start: 20px;
+            padding-inline-end: 20px;
+            padding-top: 27px;
+        }
+        .rs-libraries-desc {
+            margin-bottom: 28px;
+        }
+    }
+}

@@ -1,0 +1,103 @@
+:root {
+
+  /**  @font family declaration */
+  --rs-ff-body: 'Inter', sans-serif;
+  --rs-ff-title: 'Bitter', sans-serif;
+  --rs-ff-p: 'Inter', sans-serif;
+  --rs-ff-remixicon: "remixicon";
+
+  /** @color declaration */
+
+
+  // common color
+  --rs-white: #FFFFFF;
+  --rs-black: #000;
+  --rs-light: #eee;
+  --rs-green: #54BD05;
+  --rs-yellow: #F69C00;
+  --rs-pink: #E033E0;
+  --rs-red: #E80000;
+
+  // theme color
+  --rs-theme-blue: #003A65;
+  --rs-theme-blue-two: #07294D;
+  --rs-theme-yellow: #FDC72F;
+  --rs-theme-cyan: #0C5776;
+  --rs-theme-light-cyan: #00ADE2;
+  --rs-theme-red: #960B27;
+  --rs-theme-red-two: #A50034;
+  --rs-theme-green: #2F584F;
+  --rs-theme-green-two: #15A656;
+
+  // body text color
+  --rs-text-primary: #4C4C4C;
+  --rs-text-secondary: #656565;
+
+  // title color
+  --rs-title-primary: #030303;
+  --rs-title-secondary: #1D1D1B;
+  --rs-title-tertiary: #051435;
+
+  // bg color
+  --rs-bg-primary: #F6F4EE;
+  --rs-bg-secondary: #F4F3F3;
+  --rs-bg-black: #231F20;
+  --rs-bg-dark-blue: #2F3E4B;
+  --rs-bg-blue: #003A65;
+
+  // border color
+  --rs-border-primary: #E4E4E4;
+  --rs-border-secondary: rgba(255, 255, 255, 0.15);
+  --rs-border-tertiary: rgba(255, 255, 255, 0.1);
+
+  // rgb color
+  --rs-rgba-1: rgba(255, 255, 255, 0.7);
+  --rs-rgba-2: rgba(255, 255, 255, 0.8);
+
+
+  //  placeholder color
+  --rs-placeholder: rgba(30, 30, 30, 0.4);
+
+  // linear color
+  --rs-gradient-primary: #00033D;
+  --rs-gradient-secondary: #0349EF;
+
+  // extra color
+  --rs-rating: #F3B656;
+
+
+  /** @font weight declaration */
+  --rs-fw-normal: normal;
+  --rs-fw-thin: 100;
+  --rs-fw-elight: 200;
+  --rs-fw-light: 300;
+  --rs-fw-regular: 400;
+  --rs-fw-medium: 500;
+  --rs-fw-sbold: 600;
+  --rs-fw-bold: 700;
+  --rs-fw-ebold: 800;
+  --rs-fw-black: 900;
+
+  /** @font size declaration */
+  --rs-fs-body: 16px;
+  --rs-fs-p: 16px;
+  --rs-fs-h1: 64px;
+  --rs-fs-h2: 48px;
+  --rs-fs-h3: 36px;
+  --rs-fs-h4: 30px;
+  --rs-fs-h5: 24px;
+  --rs-fs-h6: 20px;
+  --rs-fs-b1: 14px;
+  --rs-fs-b2: 16px;
+  --rs-fs-b3: 18px;
+  --rs-fs-b4: 22px;
+}
+
+$white: #ffffff;
+$black: #000000;
+$theme-black: #231F40;
+$primary: #5777FF;
+$secondary: #F3DABA;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #FF0000;

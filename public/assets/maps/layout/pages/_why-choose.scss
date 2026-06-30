@@ -1,0 +1,165 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.45 why choose css
+/*----------------------------------------*/
+
+.rs-why-choose{
+    &-one{
+        position: relative;
+        .rs-why-choose-shape{
+            position: absolute;
+            top: 260px;
+            inset-inline-end: 60px;
+            @media #{$xl}{
+                top: 230px;
+                inset-inline-end: 30px;
+            }
+            @media #{$lg}{
+                top: 180px;
+                inset-inline-end: 30px;
+            }
+            @media #{$sm}{
+                display: none;
+            }
+        }
+        .rs-why-choose-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            @media #{$md}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-why-choose-item{
+            background: var(--rs-white);
+            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.06);
+            padding-bottom: 40px;
+            padding-inline: 50px;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 50px;
+            @media #{$laptop}{
+                padding-bottom: 30px;
+                padding-inline: 40px;
+            }
+            @media #{$lg}{
+                padding-bottom: 20px;
+                padding-inline: 30px;
+            }
+            &.has-theme-red{
+                background: var(--rs-bg-black);
+                .rs-why-choose-icon{
+                    background: var(--rs-theme-red);
+                    svg{
+                        path{
+                            fill: var(--rs-white);
+                        }
+                    }
+                }
+                .rs-why-choose-title {
+                    color: var(--rs-white);
+                }
+                .rs-why-choose-desc{
+                    color: rgba(255, 255, 255, 0.76);
+                }
+            }
+        }
+        .rs-why-choose-icon{
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.06);
+            background: var(--rs-white);
+            margin: -50px auto 35px;
+            @media #{$lg}{
+                width: 80px;
+                height: 80px;
+                margin: -50px auto 25px;
+            }
+            svg{
+                width: 50px;
+                height: 50px;
+                @media #{$lg}{
+                    width: 40px;
+                    height: 40px;
+                }
+                path{
+                    fill: var(--rs-theme-red);
+                }
+            }
+        }
+        .rs-why-choose-title {
+	        margin-bottom: 10px;
+        }
+        &.has-theme-cyan{
+            .rs-why-choose-icon{
+                border-radius: 100px;
+                width: 110px;
+                height: 110px;
+                @media #{$lg}{
+                    width: 80px;
+                    height: 80px;
+                }
+                svg{
+                    path{
+                        fill: var(--rs-black);
+                    }
+                }
+            }
+            .rs-why-choose-item{
+                padding-bottom: 45px;
+                padding-inline: 45px;
+                margin-top: 45px;
+                @media #{$laptop}{
+                    padding-bottom: 25px;
+                    padding-inline: 30px;
+                }
+            }
+        }
+        &.has-theme-blue{
+            .rs-why-choose-title{
+                color: var(--rs-title-tertiary);
+            }
+            .rs-why-choose-item{
+                padding-inline: 30px;
+                @media #{$laptop}{
+                    padding-inline: 20px;
+                }
+            }
+            .rs-why-choose-icon{
+                border-radius: 100px;
+                width: 105px;
+                height: 105px;
+                @media #{$laptop}{
+                    width: 90px;
+                    height: 90px;
+                }
+                svg{
+                    path{
+                        fill: var(--rs-theme-blue);
+                    }
+                }
+            }
+            &.rs-why-choose-wrapper{
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                gap: 30px;
+                margin-top: 40px;
+                margin-bottom: 30px;
+                @media #{$lg}{
+                    grid-template-columns: repeat(2,1fr);
+                }
+                @media #{$sm}{
+                    grid-template-columns: repeat(1,1fr);
+                }
+            }
+        }
+    }
+}

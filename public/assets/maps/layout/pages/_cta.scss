@@ -1,0 +1,128 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.10 call to action css
+/*----------------------------------------*/
+
+.rs-cta {
+    &-one{
+        position: relative;
+        .rs-cta-bg-thumb{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            &::before{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(247deg, #003A6500 0%, var(--rs-theme-blue) 64%);
+                opacity: 0.7;
+            }
+        }
+        .rs-cta-wrapper {
+            padding-top: 90px;
+            padding-bottom: 100px;
+            @media #{$md} {
+                padding-top: 70px;
+                padding-bottom: 80px;
+	        }
+        }
+        .section-desc{
+            max-width: 570px;
+            margin-bottom: 35px;
+        }
+        &.has-theme-red{
+            .rs-cta-bg-thumb{
+                &::before{
+                    background-image: linear-gradient(247deg, #003A6500 0%, #231F20 64%);
+                }
+            }
+        }
+    }
+    &-two{
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-inline-start: 30px;
+        padding-inline-end: 30px;
+        margin-inline-start: 10px;
+        @media #{$laptop}{
+            padding-top: 30px;
+            padding-bottom: 30px;
+            margin-inline-start: 0px;
+        }
+        .rs-cta-bg-thumb{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            inset-inline-start: 0;
+            z-index: 1;
+            border-radius: 12px;
+            &::before{
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.88) 75%);
+                border-radius: 12px;
+            }
+        }
+        .rs-cta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .rs-cta-icon{
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            backdrop-filter: blur(21px);
+            background-image: radial-gradient(at center center, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+            img{
+                width: 60px;
+            }
+        }
+        .rs-cta-title {
+	        color: var(--rs-white);
+        }
+        .rs-cta-contact{
+            display: flex;
+            flex-direction: column;
+            .contact-phone {
+                font-size: 24px;
+                color: var(--rs-theme-yellow);
+                font-family: var(--rs-ff-title);
+                font-weight: 600;
+                margin-top: 15px;
+                margin-bottom: 10px;
+                @media #{$sm}{
+                    font-size: 22px;
+                }
+            }
+            .contact-email{
+                color: var(--rs-white);
+                &:hover{
+                    color: var(--rs-theme-yellow);
+                }
+            }
+        }
+        .rs-cta-btn {
+	        margin-top: 25px;
+        }
+    }
+}

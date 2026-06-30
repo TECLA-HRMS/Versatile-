@@ -1,0 +1,26 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.3 Background
+/*----------------------------------------*/
+
+
+.bg-primary {
+    background-color: var(--rs-bg-primary);
+}
+
+.secondary-bg {
+    background-color: var(--rs-bg-secondary);
+}
+
+.bg-grey {
+    background-color: var(--rs-bg-grey);
+}
+
+.theme-secondary{
+    background: var(--rs-theme-secondary);
+}
+
+.blue-bg{
+    background: var(--rs-blue);
+}

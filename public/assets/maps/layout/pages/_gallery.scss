@@ -1,0 +1,219 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.22 gallery css
+/*----------------------------------------*/
+
+.rs-gallery{
+    &-one{
+        overflow-x: clip;
+        .rs-gallery-wrapper{
+            position: relative;
+        }
+        .rs-gallery-item-wrapper{
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            gap: 0;
+            @media #{$md}{
+                grid-template-columns: repeat(3,1fr);
+            }
+            @media #{$mobile}{
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+        .rs-gallery-thumb{
+            img{
+                width: 100%;
+            }
+        }
+        .rs-gallery-btn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+    }
+    &-two{
+        .rs-gallery-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 15px;
+            @media #{$sm}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$mobile}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-gallery-item{
+            &:hover{
+                .rs-gallery-thumb{
+                    &:before{
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+                .rs-gallery-btn{
+                    transform: translate(-50%, -50%) scale(1);
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+        .rs-gallery-thumb{
+            position: relative;
+            &::before{
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(43, 57, 68, 0.5);
+                transition: all 0.4s ease-out;
+                border-radius: 4px;
+                opacity: 0;
+                visibility: hidden;
+            }
+            img{
+                width: 100%;
+                border-radius: 10px;
+            }
+        }
+        .rs-gallery-btn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.3);
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.4s ease-out;
+            .rs-btn-circle{
+                background: var(--rs-white);
+                &:hover{
+                    background: var(--rs-theme-yellow);
+                }
+                i{
+                    color: var(--rs-black);
+                }
+            }
+        }
+        .rs-gallery-tab-wrapper{
+            .nav-pills{
+                display: flex;
+                justify-content: center;
+                gap: 30px 10px;
+                margin-bottom: 35px;
+                margin-top: 35px;
+                @media #{$md}{
+                    gap: 20px 10px;
+                }
+            }
+            .nav-link{
+                background: var(--rs-theme-blue);
+                font-weight: 600;
+                padding: 0;
+                padding-bottom: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                position: relative;
+                border-radius: 8px;
+                border-bottom: 0;
+                color: var(--rs-white);
+                font-size: 16px;
+                transition: all 0.3s ease-in-out;
+                padding: 15px 35px;
+                @media #{$md}{
+                    padding: 15px 15px;
+                    font-size: 15px;
+                }
+                &.active{
+                    color: var(--rs-title-tertiary);
+                    background: var(--rs-theme-yellow);
+                }
+                &:hover{
+                    color: var(--rs-title-tertiary);
+                    background: var(--rs-theme-yellow);
+                }
+            }
+        }
+        .rs-gallery-tab-anim {
+            .tab-pane.active {
+                .rs-gallery-wrapper {
+                    -webkit-animation: slide-down 5s ease-out;
+                    animation: slide-down 5s ease-out;
+                }
+            }
+        }
+        .rs-gallery-content-wrapper {
+	        @media #{$sm}{
+                display: none;
+            }
+        }
+        .rs-gallery-tab-wrapper {
+	        @media #{$sm}{
+                display: none;
+            }
+        }
+        .rs-gallery-accordion{
+            display: none;
+            margin-top: 30px;
+            @media #{$sm}{
+                display: block;
+            }
+            .rs-accordion-item{
+                padding: 0;
+                background: none;
+                &:not(:last-child){
+                    margin-bottom: 15px;
+                }
+            }
+            .accordion-body{
+                padding: 0;
+                margin-top: 30px;
+            }
+            .accordion-button{
+                padding: 15px 35px;
+                background: var(--rs-theme-blue);
+                color: var(--rs-white);
+                font-size: 16px;
+                border-radius: 8px;
+                justify-content: center;
+                font-weight: 600;
+                &:hover{
+                    color: var(--rs-title-primary);
+                    background: var(--rs-theme-yellow);
+                }
+                :not(.collapsed){
+                    background: var(--rs-theme-yellow);
+                    color: var(--rs-title-primary);
+                }
+            }
+        }
+    }
+    &-three{
+        .rs-gallery-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            @media #{$md}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-gallery-thumb{
+            img{
+                border-radius: 8px;
+            }
+        }
+    }
+}

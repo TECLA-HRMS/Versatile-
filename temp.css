@@ -1,0 +1,196 @@
+    .corp-sidebar .sidebar-brand {
+        padding: 0;
+    }
+
+    .corp-sidebar .nav-icon {
+        margin-right: 0;
+    }
+
+    .corp-sidebar .sidebar-footer {
+        padding: 16px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Main */
+    .corp-main {
+        padding: 24px 20px;
+    }
+
+    /* Metrics 2-col */
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Table horizontal scroll */
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+/* ── ≥ 992px  (Desktop sidebar show/hide) ────────────── */
+@media (min-width: 992px) {
+    .mobile-bottom-nav { display: none !important; }
+    .mobile-sidebar-drawer   { display: none !important; }
+    .mobile-sidebar-backdrop { display: none !important; }
+    .desktop-only { display: flex !important; }
+}
+
+/* =============================================
+   FORM STYLES — Modern Professional Design
+   ============================================= */
+.form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.form-control, .form-select {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: var(--font-family);
+    line-height: 1.5;
+    color: var(--text-primary);
+    background-color: var(--bg-white);
+    background-clip: padding-box;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    color: var(--text-primary);
+    background-color: var(--bg-white);
+    border-color: var(--accent-blue);
+    outline: 0;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 12px;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    padding-right: 36px;
+}
+
+[data-theme="dark"] .form-control, [data-theme="dark"] .form-select {
+    background-color: rgba(15, 23, 42, 0.5);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control:focus, [data-theme="dark"] .form-select:focus {
+    border-color: var(--accent-blue);
+    background-color: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: var(--danger);
+}
+
+.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.form-control.is-invalid, .form-select.is-invalid {
+    border-color: var(--danger);
+}
+.form-control.is-invalid:focus, .form-select.is-invalid:focus {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+/* =============================================
+   BUTTONS & TOGGLES — Modern Professional Design
+   ============================================= */
+.btn-light {
+    background-color: #f8fafc;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+.btn-light:hover {
+    background-color: #e2e8f0;
+    color: var(--text-primary);
+}
+
+.btn-danger {
+    background-color: #fef2f2;
+    color: var(--danger);
+    border: 1px solid #fecaca;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+.btn-danger:hover {
+    background-color: var(--danger);
+    color: white;
+    border-color: var(--danger);
+}
+
+/* Switches / Toggles */
+.form-switch {
+    padding-left: 2.5em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+.form-switch .form-check-input {
+    width: 2.5em;
+    height: 1.25em;
+    margin-left: -2.5em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+    background-position: left center;
+    border-radius: 2em;
+    transition: background-position .15s ease-in-out;
+    background-color: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    cursor: pointer;
+}
+.form-switch .form-check-input:checked {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    background-position: right center;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+.form-switch .form-check-label {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-primary);
+}

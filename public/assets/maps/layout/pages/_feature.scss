@@ -1,0 +1,215 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*   4.19 feature css
+/*----------------------------------------*/
+
+.rs-feature {
+    &-one{
+        .rs-feature-wrapper{
+            display: grid;
+            grid-template-columns: 635px auto;
+            gap: 30px 75px;
+            align-items: center;
+            background: var(--rs-white);
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.02);
+            border-radius: 12px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            padding-inline-start: 50px;
+            padding-inline-end: 30px;
+            @media #{$laptop}{
+                grid-template-columns: 600px auto;
+                gap: 30px 30px;
+                padding-inline-start: 30px;
+            }
+            @media #{$lg}{
+                grid-template-columns: 500px auto;
+                align-items: start;
+            }
+            @media #{$md}{
+                grid-template-columns: auto;
+                align-items: start;
+            }
+            @media #{$xs}{
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-inline-start: 25px;
+                padding-inline-end: 25px;
+            }
+        }
+        .rs-feature-icon{
+            svg{
+                width: 40px;
+                height: 40px;
+            }
+        }
+        .rs-feature-thumb{
+            @media #{$lg}{
+                position: sticky;
+                top: 110px;
+            }
+            @media #{$md}{
+                position: relative;
+                top: unset;
+            }
+            img{
+                width: 100%;
+                border-radius: 12px;
+            }
+        }
+        .rs-feature-title{
+            color: var(--rs-title-tertiary);
+            margin-bottom: 15px;
+        }
+        .rs-feature-item {
+            display: flex;
+            align-items: start;
+            gap: 20px;
+            @media #{$mobile}{
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+        }
+        .rs-feature-list-title{
+            color: var(--rs-title-tertiary);
+        }
+        .rs-feature-list {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            margin-bottom: 35px;
+            gap: 20px;
+            @media #{$lg}{
+                grid-template-columns: repeat(1,1fr);
+            }
+            @media #{$md}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-feature-desc {
+            border-bottom: 1px solid var(--rs-border-primary);
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+        }
+    }
+    &-two{
+        padding-inline-start: 165px;
+        padding-inline-end: 165px;
+        margin-top: -120px;
+        position: relative;
+        z-index: 2;
+        @media #{$xl}{
+            padding-inline-start: 0px;
+            padding-inline-end: 0px;
+        }
+        @media #{$sm}{
+            margin-top: 0;
+            background: var(--rs-bg-primary);
+            padding-top: 80px;
+        }
+        .rs-feature-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            @media #{$md}{
+                gap: 15px;
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media #{$xs}{
+                grid-template-columns: repeat(1, 1fr);
+                gap: 20px;
+            }
+        }
+        .rs-feature-item{
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 30px;
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--rs-white);
+                text-decoration: none;
+                transition:  0.5s ease;
+                background: #1F2226;
+                font-family: var(--rs-ff-title);
+                &:hover{
+                    background: var(--rs-theme-red);
+                    color: var(--rs-white);
+                }
+                @media #{$laptop}{
+                    font-size: 20px;
+                    padding: 20px;
+                }
+                @media #{$md}{
+                    font-size: 16px;
+                    padding: 15px;
+                }
+                @media #{$sm}{
+                    font-size: 20px;
+                    padding: 20px;
+                }
+            }
+        }
+    }
+    &-three{
+            position: relative;
+            z-index: 2;
+            background: var(--rs-bg-secondary);
+        .rs-feature-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: -35px;
+            @media #{$sm}{
+                margin-top: 0;
+                padding-top: 80px;
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+        .rs-feature-item{
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 18px 25px 18px 25px;
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--rs-white);
+                text-decoration: none;
+                transition: 0.5s ease;
+                background: #231F20;
+                font-family: var(--rs-ff-title);
+                border-radius: 20px;
+                gap: 18px;
+                @media #{$lg}{
+                    padding: 18px 20px 18px 20px;
+                }
+                &:hover{
+                    background: var(--rs-theme-red);
+                    color: var(--rs-white);
+                }
+            }
+            .feature-icon{
+                svg{
+                    width: 30px;
+                    height: 30px;
+                    path{
+                        fill: var(--rs-white);
+                    }
+                }
+            }
+            &.is-active{
+                a{
+                    background: var(--rs-theme-red);
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,155 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.31 process
+/*----------------------------------------*/
+
+.rs-process{
+    &-one{
+        .rs-progress-wrapper {
+            display: grid;
+            grid-template-columns: 460px auto;
+            gap: 30px 90px;
+            align-items: start;
+            @media #{$lg}{
+               grid-template-columns: 400px auto;
+               gap: 30px 30px; 
+            }
+            @media #{$md}{
+               grid-template-columns: auto;
+            }
+        }
+        .rs-process-thumb{
+            margin-top: 50px;
+            position: sticky;
+            top: 160px;
+            @media #{$md}{
+                position: relative;
+                top: unset;
+            }
+            img{
+                width: 100%;
+                border-radius: 16px;
+            }
+        }
+        .rs-process-badge {
+            background: var(--rs-theme-blue);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            position: absolute;
+            left: 50%;
+            z-index: 1;
+            top: -50px;
+            transform: translateX(-50%);
+        }
+        .rs-process-title {
+            background: var(--rs-theme-blue);
+            padding-top: 17px;
+            padding-bottom: 17px;
+            padding-inline-start: 25px;
+            padding-inline-end: 25px;
+            border-radius: 6px 6px 0 0;
+            color: var(--rs-white);
+            font-size: 20px;
+            @media #{$xs}{
+                padding-inline-start: 15px;
+                padding-inline-end: 15px;
+                font-size: 18px;
+            }
+        }
+        .rs-process-inner{
+            position: relative;
+            padding-inline-start: 40px;
+            @media #{$xs}{
+                padding-inline-start: 30px;
+            }
+            &::before{
+                position: absolute;
+                content: "";
+                inset-inline-start: 0px;
+                top: 0px;
+                width: 16px;
+                height: 16px;
+                background-color: var(--rs-theme-blue);
+                border: 3px solid rgba(255, 255, 255, 0.98);
+                border-radius: 50%;
+                z-index: 2;
+                box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.3);
+            }
+            &::after{
+                position: absolute;
+                content: "";
+                inset-inline-start: 7px;
+                top: 0;
+                bottom: 0;
+                width: 1px;
+                height: 100%;
+                background-color: var(--rs-border-primary);
+            }
+        }
+        .rs-process-content{
+            color: var(--rs-text-primary);
+            padding-top: 20px;
+            padding-inline-start: 25px;
+            padding-inline-end: 25px;
+            padding-bottom: 25px;
+            background: var(--rs-white);
+            border-radius: 0 0 6px 6px;
+            position: relative;
+            @media #{$xs}{
+                padding-inline-start: 20px;
+                padding-inline-end: 20px;
+                padding-bottom: 20px;
+            }
+        }
+        .rs-process-item{
+            &:not(:last-child){
+                margin-bottom: 25px;
+            }
+        }
+    }
+    &-two{
+        .rs-process-table-inner {
+            width: 100%;
+            background-color: var(--rs-white);
+            border: 1px solid var(--rs-border-primary);
+            @media #{$xl}{
+                width: max-content;
+                min-width: 100%;
+            }
+            thead{
+                background-color: var(--rs-theme-blue);
+                color: var(--rs-white);
+            }
+            th{
+                padding: 15px 24px;
+                font-weight: 600;
+                font-size: 15px;
+                font-family: var(--rs-ff-title);
+                border-inline-end: 1px solid var(--rs-border-tertiary);
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+            }
+            td{
+                padding: 15px 24px;
+                vertical-align: middle;
+                border: 1px solid var(--rs-border-primary);
+                font-size: 16px;
+                font-weight: 500;
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+                a{
+                    &:hover{
+                        color: var(--rs-theme-blue);
+                    }
+                }
+            }
+        }
+    }
+}

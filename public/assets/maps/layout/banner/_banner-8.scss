@@ -1,0 +1,157 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1.8 banner style 8
+/*----------------------------------------*/
+
+.rs-banner {
+    &-eight {
+        position: relative;
+        z-index: 1;
+        overflow-x: clip;
+        .rs-banner-bg-thumb {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-position: top center;
+            transition: transform 7000ms ease, opacity 1500ms ease-in, -webkit-transform 7000ms ease;
+            @include rtl {
+                transform: rotateY(180deg);
+            }
+        }
+        .rs-banner-wrapper {
+            position: relative;
+            z-index: 1;
+            padding-top: 300px;
+            padding-inline-start: 240px;
+            padding-bottom: 220px;
+            @media #{$desktop}{
+                padding-inline-start: 200px;
+            }
+            @media #{$laptop}{
+                padding-inline-start: 100px;
+                padding-top: 275px;
+            }
+            @media #{$xl}{
+                padding-top: 255px;
+                padding-bottom: 200px;
+            }
+            @media #{$lg}{
+                padding-top: 235px;
+            }
+            @media #{$md}{
+                padding-top: 170px;
+                padding-inline-start: 0px;
+                padding-bottom: 100px;
+            }
+        }
+        .rs-banner-btn {
+	        margin-top: 30px;
+        }
+        .rs-banner-subtitle {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--rs-theme-yellow);
+            margin-bottom: 30px;
+            display: inline-block;
+            @media #{$md}{
+                margin-bottom: 20px;
+            }
+        }
+        .rs-banner-title {
+            color: var(--rs-white);
+            line-height: 1.2;
+            font-size: 86px;
+            letter-spacing: -1px;
+            font-family: "Prata", serif;
+            font-weight: 400;
+            @media #{$xl}{
+                font-size: 80px;
+            }
+            @media #{$lg}{
+                font-size: 70px;
+            }
+            @media #{$md}{
+                font-size: 60px;
+                br{
+                    display: none;
+                }
+            }
+            @media #{$sm}{
+                font-size: 50px;
+            }
+            @media #{$xs}{
+                font-size: 40px;
+            }
+        }
+        .rs-banner-pagination{
+            position: absolute;
+            inset-inline-end: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            @media #{$md}{
+                bottom: 40px;
+                transform: translateX(-50%) translateY(0);
+                inset-inline-start: 50%;
+                top: unset;
+                inset-inline-end: unset;
+            }
+            .rs-pagination.swiper-pagination {
+                position: absolute;
+                bottom: 40px;
+                @media #{$md}{
+                    position: unset;
+                }
+            }
+            .swiper-pagination-bullet{
+                &.swiper-pagination-bullet-active{
+                    background: var(--rs-theme-yellow);
+                    &::before{
+                        border-color: var(--rs-white);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+// slider animation
+.rs-banner-eight {
+     .swiper-slide-active {
+         .rs-banner-subtitle,
+         .rs-banner-title,
+         .rs-banner-desc,
+         .rs-banner-btn{
+            animation-fill-mode: both;
+            animation-name: fadeInUp;
+         }
+    }
+     .swiper-slide-active {
+        .rs-banner-subtitle{
+            animation-delay: .3s;
+            animation-duration: 0.7s;
+        }
+         .rs-banner-title {
+            animation-delay: .5s;
+            animation-duration: 0.9s;
+        }
+         .rs-banner-desc {
+            animation-delay: .7s;
+            animation-duration: 1.1s;
+        }
+         .rs-banner-btn {
+            animation-delay: .9s;
+            animation-duration: 1.3s;
+        }
+        .rs-banner-bg-thumb {
+            transform: scale(1.15);
+        }
+    }
+}

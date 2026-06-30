@@ -1,0 +1,86 @@
+@use '../utils' as *;
+
+/*----------------------------------------
+   2.14 Basic navigation
+-----------------------------------------*/
+
+.rs-swiper-btn-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.rs-swiper-btn{
+    width: 40px;
+    height: 40px;
+    background: var(--rs-theme-blue);
+    color: var(--rs-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    transition: all 0.3s 0s ease-out;
+    cursor: pointer;
+    @include rtl  {
+        transform: rotateY(-180deg);
+    }
+    &.is-large{
+        width: 60px;
+        height: 60px;
+        background: var(--rs-theme-secondary);
+        border-radius: 0%;
+        font-size: 30px;
+        color: var(--rs-white);
+        &:hover{
+            background: var(--rs-theme-primary);
+            color: var(--rs-white);
+        }
+
+    }
+    &.has-radius-small{
+        border-radius: 3px;
+    }
+    &:hover{
+        background: var(--rs-theme-primary);
+        color: var(--rs-theme-secondary);
+    }
+    &.has-transparent{
+        background: transparent;
+        width: unset;
+        height: unset;
+    }
+    &.has-theme-red{
+        background: var(--rs-theme-red);
+        width: 50px;
+        height: 50px;
+        border-radius: 0;
+        font-size: 25px;
+        &:hover{
+            background: var(--rs-white);
+            color: var(--rs-black);
+        }
+    }
+    &.has-theme-green{
+        background: var(--rs-theme-green);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 25px;
+        &:hover{
+            background: var(--rs-theme-yellow);
+            color: var(--rs-black);
+        }
+    }
+}
+
+// common swiper button
+.rs-swiper{
+    .swiper-button-prev,
+    .swiper-button-next{
+        position: unset;
+        margin-top: 0;
+        &::after{
+            content: none;
+        }
+    }
+}

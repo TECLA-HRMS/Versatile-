@@ -1,0 +1,92 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.18 faq css
+/*----------------------------------------*/
+
+.rs-faq{
+    &-one{
+        position: relative;
+        z-index: 1;
+    .rs-faq-wrapper{
+        max-width: 1005px;
+        margin: 0 auto;
+    }
+    .rs-faq-shape{
+        position: absolute;
+        bottom: 0;
+        inset-inline-end: 100px;
+        @media #{$laptop}{
+            inset-inline-end: 0px;
+        }
+        @media #{$lg}{
+            display: none;
+        }
+    }
+    }
+    &-two{
+        .rs-faq-tab-wrapper {
+            ul {
+                li {
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+                    .nav-link{
+                        display: flex;
+                        align-items: center;
+                        background: var(--rs-white);
+                        padding-top: 13px;
+                        padding-bottom: 13px;
+                        padding-inline: 20px;
+                        font-weight: 600;
+                        border-radius: 6px;
+                        transition: 0.5s;
+                        color: var(--rs-title-tertiary);
+                        gap: 10px;
+                        width: 100%;
+                        &.active{
+                            color: var(--rs-white);
+                            background: var(--rs-theme-blue);
+                            .rs-faq-tab-icon{
+                                svg{
+                                    path{
+                                        fill: var(--rs-white);
+                                    }
+                                }
+                            }
+                        }
+                        &:hover {
+                            color: var(--rs-white);
+                            background: var(--rs-theme-blue);
+                            span {
+                                svg {
+                                    fill: var(--rs-white);
+                                }
+                            }
+                        }
+                        span {
+                            svg {
+                                width: 23px;
+                                height: 23px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .nav-pills{
+            display: block;
+        }
+        .accordion-body{
+            font-style: normal;
+        }
+        .rs-faq-tab-anim {
+            .tab-pane.active {
+                .accordion-wrapper {
+                    -webkit-animation: slide-down 5s ease-out;
+                    animation: slide-down 5s ease-out;
+                }
+            }
+        }
+    }
+}

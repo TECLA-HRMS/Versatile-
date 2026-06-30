@@ -1,0 +1,491 @@
+/* ============================================
+   PROFESSIONAL ADMIN TABLE â€” admin-table.css
+   ============================================ */
+
+/* --- Page Header --- */
+.apt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.apt-header-info h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    letter-spacing: -0.3px;
+}
+
+.apt-header-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.apt-create-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fdc72f;
+    color: #1a365d;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(253, 199, 47, 0.3);
+    white-space: nowrap;
+}
+
+.apt-create-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(253, 199, 47, 0.4);
+    color: #fff;
+}
+
+.apt-create-btn i {
+    font-size: 18px;
+}
+
+/* --- Table Wrapper Card --- */
+.apt-card {
+    background: var(--bg-white);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.apt-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* --- Table Toolbar (count, search, etc.) --- */
+.apt-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.apt-count {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.apt-count strong {
+    color: var(--text-primary);
+}
+
+/* --- Responsive Table Wrapper --- */
+.apt-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --- Table --- */
+.apt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* --- Table Head --- */
+.apt-table thead tr {
+    background-color: #f8fafc;
+    border-bottom: 2px solid var(--border-color);
+}
+
+[data-theme="dark"] .apt-table thead tr {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.apt-table thead th {
+    padding: 14px 24px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    border: none;
+}
+
+/* --- Table Body --- */
+.apt-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.15s ease;
+}
+
+.apt-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.apt-table tbody tr:hover {
+    background-color: #f8faff;
+}
+
+[data-theme="dark"] .apt-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.apt-table tbody td {
+    padding: 18px 24px;
+    vertical-align: middle;
+    color: var(--text-primary);
+    border: none;
+}
+
+/* --- Cell Variants --- */
+.apt-cell-id {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-app);
+    border-radius: 6px;
+    padding: 4px 8px;
+    display: inline-block;
+    min-width: 32px;
+    text-align: center;
+}
+
+.apt-cell-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.apt-cell-email {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.apt-cell-actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* --- Avatar / Initials --- */
+.apt-user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.apt-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 10px;
+    background: #1a365d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.apt-user-info .name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.apt-user-info .email {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* --- Badges --- */
+.apt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.apt-badge i {
+    font-size: 12px;
+}
+
+.apt-badge-success {
+    background-color: #ecfdf5;
+    color: #059669;
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.apt-badge-danger {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.apt-badge-primary {
+    background-color: #eff6ff;
+    color: #1a365d;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.apt-badge-secondary {
+    background-color: var(--bg-app);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .apt-badge-success { background-color: rgba(5, 150, 105, 0.15); }
+[data-theme="dark"] .apt-badge-danger { background-color: rgba(220, 38, 38, 0.15); }
+[data-theme="dark"] .apt-badge-primary { background-color: rgba(37, 99, 235, 0.15); }
+
+/* --- Permission Chips --- */
+.apt-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.apt-chip {
+    padding: 3px 10px;
+    background-color: var(--bg-app);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    text-transform: capitalize;
+}
+
+[data-theme="dark"] .apt-chip {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* --- Action Buttons --- */
+.apt-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.apt-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-white);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.apt-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.apt-btn-edit {
+    color: #1a365d;
+}
+
+.apt-btn-edit:hover {
+    background: #eff6ff;
+    border-color: rgba(37, 99, 235, 0.3);
+    color: #1a365d;
+}
+
+.apt-btn-delete {
+    color: #dc2626;
+}
+
+.apt-btn-delete:hover {
+    background: #fef2f2;
+    border-color: rgba(220, 38, 38, 0.3);
+    color: #dc2626;
+}
+
+/* --- Empty State --- */
+.apt-empty {
+    padding: 64px 24px;
+    text-align: center;
+}
+
+.apt-empty-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--bg-app);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: var(--text-muted);
+}
+
+.apt-empty h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+
+.apt-empty p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* --- Pagination Footer --- */
+.apt-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.apt-pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.apt-page-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-white);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.apt-page-btn:hover {
+    background: var(--bg-app);
+    color: var(--text-primary);
+}
+
+.apt-page-btn.active {
+    background: #1a365d;
+    border-color: #1a365d;
+    color: #fff;
+    font-weight: 600;
+}
+
+.apt-page-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    .apt-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .apt-create-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .apt-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Stack table as cards on mobile */
+    .apt-table thead {
+        display: none;
+    }
+
+    .apt-table tbody tr {
+        display: block;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        margin: 12px 16px;
+        background: var(--bg-white);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+    }
+
+    .apt-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border-color);
+        text-align: right;
+    }
+
+    .apt-table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    .apt-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--text-muted);
+        text-align: left;
+        flex-shrink: 0;
+        margin-right: 12px;
+    }
+
+    .apt-table tbody td .apt-chips,
+    .apt-table tbody td .apt-actions,
+    .apt-table tbody td .apt-user-cell {
+        justify-content: flex-end;
+    }
+
+    .apt-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+

@@ -1,0 +1,51 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.35 quote css
+/*----------------------------------------*/
+
+.rs-quote{
+    &-wrapper{
+        border-radius: 6px;
+        background: var(--rs-white);
+        padding-top: 34px;
+        padding-bottom: 30px;
+        padding-inline-start: 40px;
+        padding-inline-end: 40px;
+        margin-bottom: 30px;
+        @media #{$laptop}{
+            padding-top: 30px;
+            padding-inline-start: 30px;
+            padding-inline-end: 30px;
+        }
+        @media #{$xs}{
+            padding-top: 25px;
+            padding-inline-start: 25px;
+            padding-inline-end: 25px;
+            padding-bottom: 25px;
+        }
+        .rs-quote-icon{
+            margin-bottom: 20px;
+            svg{
+                width: 40px;
+                height: 40px;
+                path{
+                    fill: var(--rs-theme-yellow);
+                }
+            }
+        }
+        .rs-quote-desc{
+            font-size: 18px;
+            font-style: italic;
+            color: var(--rs-title-primary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            @media #{$sm}{
+                font-size: 16px;
+            }
+        }
+        .rs-quote-author {
+	        font-size: 18px;
+        }
+    }
+}

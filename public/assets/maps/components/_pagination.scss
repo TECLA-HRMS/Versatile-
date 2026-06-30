@@ -1,0 +1,174 @@
+@use '../utils' as *;
+
+/*----------------------------------------
+   2.16 Basic pagination
+-----------------------------------------*/
+
+.rs-pagination {
+   &.swiper-pagination {
+      position: unset;
+      overflow: visible;
+      font-size: unset;
+      transform: unset !important;
+      width: 100% !important;
+      .swiper-pagination-bullet{
+         width: 8px;
+         height: 8px;
+         background: #DBDEE1;
+         position: relative;
+         transform: unset;
+         opacity: unset;
+         margin: 3px 13px;
+         &::before{
+            position: absolute;
+            content: "";
+            left: 50%;
+            top: 50%;
+            width: calc(100% + 17px);
+            height: calc(100% + 17px);
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 50%;
+         }
+         &.swiper-pagination-bullet-active{
+            background: var(--rs-theme-blue);
+            &::before{
+               border-color: var(--rs-theme-primary);
+               transform: translate(-50%, -50%) scale(1);
+            }
+         }
+      }
+      &.has-before-none{
+         .swiper-pagination-bullet{
+            width: 10px;
+            height: 10px;
+            margin: 3px 6px;
+            &::before{
+               content: none;
+            }
+         }
+      }
+      &.has-theme-yellow{
+            .swiper-pagination-bullet{
+               border: 1px solid var(--rs-theme-yellow);
+               &.swiper-pagination-bullet-active{
+                  background: var(--rs-theme-green);
+                  border-color: var(--rs-theme-green);
+               }
+               &:hover{
+                  background: var(--rs-theme-green);
+                  border-color: var(--rs-theme-green);
+               }
+            }
+      }
+      &.has-theme-blue{
+            .swiper-pagination-bullet{
+               border: 1px solid var(--rs-theme-yellow);
+               &.swiper-pagination-bullet-active{
+                  background: var(--rs-theme-blue);
+                  border-color: var(--rs-theme-blue);
+               }
+               &:hover{
+                  background: var(--rs-theme-blue);
+                  border-color: var(--rs-theme-blue);
+               }
+            }
+      }
+      &.has-theme-red{
+            .swiper-pagination-bullet{
+               border: 1px solid var(--rs-theme-red);
+               &.swiper-pagination-bullet-active{
+                  background: var(--rs-theme-red);
+                  border-color: var(--rs-theme-red);
+               }
+               &:hover{
+                  background: var(--rs-theme-red);
+               }
+            }
+      }
+      &.has-theme-green-two{
+         .swiper-pagination-bullet{
+            border: 1px solid var(--rs-theme-green-two);
+            &.swiper-pagination-bullet-active{
+               background: var(--rs-theme-green-two);
+               border-color: var(--rs-theme-green-two);
+            }
+            &:hover{
+               background: var(--rs-theme-green-two);
+               border-color: var(--rs-theme-green-two);
+            }
+         }
+      }
+      &.has-theme-cyan{
+         .swiper-pagination-bullet{
+            border: 1px solid var(--rs-theme-light-cyan);
+            &.swiper-pagination-bullet-active{
+               background: var(--rs-theme-light-cyan);
+               border-color: var(--rs-theme-light-cyan);
+            }
+            &:hover{
+               background: var(--rs-theme-light-cyan);
+               border-color: var(--rs-theme-light-cyan);
+            }
+         }
+      }
+      &.has-transparent{
+         .swiper-pagination-bullet{
+               background: transparent;
+         }
+      }
+   }
+}
+
+// common nav
+.common-pagination {
+   margin-top: 45px;
+   ul {
+      display: inline-flex;
+      gap: 10px;
+      li {
+         list-style: none;
+         &.current {
+            background: var(--rs-theme-blue);
+         }
+         a {
+               width: 40px;
+               height: 40px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               border: 1px solid var(--rs-border-primary);
+               color: var(--rs-black);
+               border-radius: 5px;
+               position: relative;
+               background: var(--rs-bg-secondary);
+               &:hover{
+                  background: var(--rs-theme-yellow);
+                  border-color: var(--rs-theme-yellow);
+                  color: var(--rs-black);
+               }
+               &.current{
+                  background: var(--rs-theme-blue);
+                  color: var(--rs-white);
+                  border: none;
+               }
+               &.is-next{
+                  &::before{
+                     position: absolute;
+                     font-family: remixicon !important;
+                     font-size: 16px;
+                     line-height: 1;
+                     opacity: 1;
+                      content: "\ea6b";
+                     left: 50%;
+                     top: 50%;
+                     transform: translate(-50%,-50%);
+                     @include rtl {
+                        transform: translate(-50%,-50%) rotateY(180deg);
+                     }
+                  }
+               }
+            }
+      }
+   }
+}

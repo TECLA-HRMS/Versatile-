@@ -1,0 +1,99 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.23 history css
+/*----------------------------------------*/
+
+.rs-history {
+    &-one {
+        .rs-history-list-item {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .rs-history-list-item {
+            &::before {
+                position: absolute;
+                content: "";
+                left: 8px;
+                top: 0;
+                width: 1px;
+                height: 100%;
+                background: #d9d9d9;
+            }
+        }
+        .rs-history-list-wrapper {
+            ul {
+                li {
+                    display: grid;
+                    grid-template-columns: 140px 1fr;
+                    gap: 16px;
+                    align-items: start;
+                    position: relative;
+                    list-style: none;
+                    @media #{$xs}{
+                        grid-template-columns: 120px 1fr;
+                    }
+                    @media #{$mobile}{
+                        grid-template-columns: 1fr;
+                        gap: 10px;
+                    }
+                    &:not(:last-child) {
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+        .rs-history-dot {
+            width: 10px;
+            height: 10px;
+            min-width: 10px;
+            border-radius: 50%;
+            background: var(--rs-theme-blue);
+            margin: 5px;
+            position: relative;
+            transform: translateY(5px);
+            &::before {
+                position: absolute;
+                content: "";
+                width: 18px;
+                height: 18px;
+                top: -4px;
+                left: -4px;
+                border-radius: 50%;
+                border: 1px solid #c0ced9;
+            }
+        }
+        .rs-history-month {
+            font-weight: 600;
+            text-align: end;
+            color: var(--rs-theme-blue);
+            @media #{$mobile}{
+                text-align: start;
+            }
+        }
+        .rs-history-desc {
+            position: relative;
+            z-index: 1;
+            padding-inline-start: 12px;
+            &::before {
+                position: absolute;
+                content: "";
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--rs-theme-blue);
+                top: 10px;
+                inset-inline-start: 0px;
+            }
+        }
+        .rs-history-list-wrapper {
+            display: flex;
+            gap: 10px;
+            @media #{$xs}{
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

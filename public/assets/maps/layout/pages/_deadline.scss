@@ -1,0 +1,45 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.12 deadline css
+/*----------------------------------------*/
+
+.rs-deadline{
+    &-one{
+        .rs-deadline-table-inner {
+            background-color: var(--rs-white);
+            border: 1px solid var(--rs-border-primary);
+            width: max-content;
+            min-width: 100%;
+            thead{
+                background-color: var(--rs-theme-blue);
+                color: var(--rs-white);
+            }
+            th{
+                padding: 15px 24px;
+                font-weight: 600;
+                font-size: 15px;
+                font-family: var(--rs-ff-title);
+                border-inline-end: 1px solid var(--rs-border-tertiary);
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+            }
+            td{
+                padding: 15px 24px;
+                vertical-align: middle;
+                border: 1px solid var(--rs-border-primary);
+                font-size: 16px;
+                font-weight: 500;
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+                a{
+                    &:hover{
+                        color: var(--rs-theme-blue);
+                    }
+                }
+            }
+        }
+    }
+}

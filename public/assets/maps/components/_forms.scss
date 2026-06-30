@@ -1,0 +1,75 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.11 forms
+/*----------------------------------------*/
+
+/* Custom checkbox button */
+input[type="checkbox"] {
+	display: none;
+	&:checked {
+		~ {
+			label {
+				&::before {
+					-webkit-transform: scale(1);
+					-moz-transform: scale(1);
+					-ms-transform: scale(1);
+					-o-transform: scale(1);
+					transform: scale(1);
+				}
+			}
+		}
+		& ~ label{
+			&::after{
+				background-color: var(--rs-white);
+				border-color: var(--rs-white);
+			}
+			&::before{
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+	~label {
+		position: relative;
+		padding-inline-start: 25px;
+		color: var(--rs-white);
+  		font-size: 16px;
+		&::after {
+			position: absolute;
+			content: '';
+			top: 4px;
+			inset-inline-start: 0;
+			width: 16px;
+			height: 16px;
+			line-height: 16px;
+			text-align: center;
+			border: 1px solid rgba(255,255,255,.5);
+			z-index: -1;
+			transition: all .2s linear;
+			border-radius: 2px;
+		}
+		&::before {
+			position: absolute;
+			content: "\eb7a";
+			top: 2px;
+			inset-inline-start: -2px;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			visibility: hidden;
+			opacity: 0;
+			color: var(--rs-black);
+			transition: all 0.2s linear;
+			font-family: remixicon !important;
+			font-size: 10px;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+

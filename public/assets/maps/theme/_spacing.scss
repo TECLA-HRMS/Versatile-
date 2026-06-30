@@ -1,0 +1,52 @@
+
+@use '../utils' as *;
+
+/*---------------------------------
+	1.1 Default Spacing SCSS
+---------------------------------*/
+
+// space style
+
+.section-space {
+	padding-top: 120px;
+	padding-bottom: 120px;
+	@media #{$lg} {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	@media #{$md} {
+		padding-top: 80px;
+		padding-bottom: 80px;
+	}
+}
+
+// only top
+.section-space-top {
+	padding-top: 120px;
+	@media #{$lg} {
+		padding-top: 100px;
+	}
+	@media #{$md} {
+		padding-top: 80px;
+	}
+}
+
+// only bottom
+.section-space-bottom {
+	padding-bottom: 120px;
+	@media #{$lg} {
+		padding-bottom: 100px;
+	}
+	@media #{$md} {
+		padding-bottom: 80px;
+	}
+}
+
+// section space
+.section-title-space {
+	margin-bottom: 45px;
+	@media #{$sm}{
+		margin-bottom: 30px;
+	}
+}
+

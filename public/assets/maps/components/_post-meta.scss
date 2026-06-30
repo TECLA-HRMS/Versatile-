@@ -1,0 +1,56 @@
+@use '../utils' as *;
+
+/*----------------------------------------
+   2.17 Post Meta
+-----------------------------------------*/
+
+.rs-post-meta {
+    ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        @media #{$laptop}{
+            flex-wrap: wrap;
+        }
+        li {
+            list-style: none;
+        }
+    }
+    .rs-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        svg {
+            width: 15px;
+            height: 15px;
+            path {
+                fill: var(--rs-theme-primary);
+            }
+        }
+        .meta-author{
+            &:hover{
+                color: var(--rs-theme-primary);
+            }
+        }
+        .rs-meta-thumb{
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        }
+    }
+    &.meta-white {
+        span {
+            color: rgba(255,255,255,.8);
+        }
+        .rs-meta {
+            svg {
+                path {
+                    fill: rgba(255,255,255,.8);
+                }
+            }
+        }
+    }
+}

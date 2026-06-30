@@ -1,0 +1,80 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.6 Bio css
+/*----------------------------------------*/
+
+.rs-bio{
+    position: relative;
+    &-wrapper{
+        display: grid;
+        grid-template-columns: 300px auto;
+        gap: 30px 40px;
+        align-items: start;
+        @media #{$laptop}{
+            gap: 30px 30px;
+        }
+        @media #{$md}{
+            grid-template-columns:auto;
+        }
+    }
+    &-author-wrapper{
+        background: var(--rs-white);
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.02);
+        border-radius: 16px;
+        padding-top: 12px;
+        padding-inline: 12px;
+        padding-bottom: 25px;
+    }
+    &-thumb{
+        img{
+            border-radius: 16px;
+            width: 100%;
+        }
+    }
+    &-info{
+        text-align: center;
+        margin-top: 22px;
+    }
+    &-name{
+        margin-bottom: 3px;
+    }
+    &-quote{
+        margin: 0;
+        background: var(--rs-white);
+        padding-top: 34px;
+        padding-bottom: 30px;
+        padding-inline-start: 40px;
+        padding-inline-end: 40px;
+        border-radius: 10px;
+        border: 1px dashed var(--rs-border-primary);
+        margin-bottom: 30px;
+        @media #{$laptop}{
+            padding-top: 30px;
+            padding-inline-start: 30px;
+            padding-inline-end: 30px;
+        }
+        @media #{$lg}{
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-inline-start: 25px;
+            padding-inline-end: 25px;
+        }
+    }
+    &-quote-desc{
+	    font-style: italic;
+    }
+    &-quote-icon{
+        margin-bottom: 20px;
+        svg{
+            width: 40px;
+            height: 40px;
+                path{
+                    fill: var(--rs-theme-yellow);
+                }
+        }
+    }
+    &-title{
+        margin-bottom: 15px;
+    }
+}

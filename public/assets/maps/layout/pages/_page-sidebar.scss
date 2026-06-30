@@ -1,0 +1,114 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.28 page sidebar
+/*----------------------------------------*/
+
+.page-sidebar {
+    background: var(--rs-white);
+    border-radius: 12px;
+    padding-top: 26px;
+    padding-bottom: 28px;
+    padding-inline-start: 30px;
+    padding-inline-end: 30px;
+    @media #{$laptop}{
+        padding-inline-start: 25px;
+        padding-inline-end: 25px;
+    }
+    .page-sidebar-line {
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        border-color: var(--rs-border-primary);
+        border-style: solid;
+        border-width: 0px 0px 1px 0px;
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 70px;
+            background: var(--rs-theme-yellow);
+            inset-inline-start: 0;
+            height: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .page-sidebar-item {
+        ul {
+            li {
+                list-style: none;
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+                a {
+                    display: flex;
+                    align-items: center;
+                    background: var(--rs-bg-primary);
+                    justify-content: space-between;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    padding-inline: 16px;
+                    font-weight: 500;
+                    border-radius: 8px;
+                    transition: .5s;
+                    color: var(--rs-title-tertiary);
+                    @media #{$lg}{
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        padding-inline: 10px;
+                        font-size: 15px;
+                    }
+                    &:hover {
+                        color: var(--rs-white);
+                        background: var(--rs-theme-blue);
+
+                        span {
+                            svg {
+                                fill: var(--rs-white);
+                            }
+                        }
+                    }
+
+                    span {
+                        svg {
+                            width: 16px;
+                            height: 16px;
+                            @include rtl {
+                                transform: rotateY(180deg);
+                            }
+                            @media #{$lg}{
+                                width: 14px;
+                                height: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+            .page-sidebar-active {
+                a {
+                    background: var(--rs-theme-blue);
+                    color: var(--rs-white);
+
+                    span {
+                        svg {
+                            path {
+                                fill: var(--rs-white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .rs-sidebar-page-thumb {
+        margin-top: 20px;
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+        }
+    }
+}

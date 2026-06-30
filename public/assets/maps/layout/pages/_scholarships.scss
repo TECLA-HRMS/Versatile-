@@ -1,0 +1,293 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.38 scholarships css
+/*----------------------------------------*/
+
+.rs-scholarships {
+    &-one {
+        .rs-scholarships-thumb {
+            margin-top: 30px;
+            img {
+                border-radius: 12px;
+            }
+        }
+    }
+    &-two{
+        .rs-scholarships-item-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            @media #{$md}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-scholarships-content{
+            background: var(--rs-white); 
+            padding-inline: 40px;
+            padding-top: 30px;
+            padding-bottom: 33px;
+            border-radius: 0px 0px 12px 12px;
+            @media #{$laptop}{
+                padding-inline: 30px;
+            }
+            @media #{$lg}{
+                padding-inline: 20px;
+                padding-top: 20px;
+                padding-bottom: 23px;
+            }
+        }
+        .rs-tuition-list{
+            .rs-tuition-list-item{
+                list-style: none;
+                &:not(:last-child){
+                    margin-bottom: 4px;
+                }
+            }
+        }
+        .rs-tuition-inner-title {
+            color: var(--rs-title-tertiary);
+            font-size: 17px;
+        }
+        .rs-scholarships-title{
+            color: var(--rs-title-tertiary);
+            margin-bottom: 20px;
+        }
+        .rs-tuition-info-item{
+            &:first-child{
+                margin-bottom: 22px;
+            }
+        }
+        .rs-tuition-inner-title {
+            font-size: 17px;
+            margin-bottom: 6px;
+            text-decoration: underline;
+        }
+        .rs-tuition-label {
+	        font-size: 15px;
+        }
+        .rs-scholarships-thumb {
+            position: relative;
+            img {
+                border-radius: 12px 12px 0px 0px;
+                width: 100%;
+                height: 180px;
+                object-fit: cover;
+                object-position: top center;
+            }
+        }
+        .rs-scholarships-icon{
+            width: 76px;
+            height: 76px;
+            background: var(--rs-theme-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50px;
+            inset-inline-start: 40px;
+            svg{
+                width: 40px;
+                height: 40px;
+                path{
+                    fill: var(--rs-white);
+                }
+            }
+        }
+        .rs-scholarships-tab-wrapper{
+            @media #{$sm}{
+                display: none;
+            }
+            .nav-pills{
+                display: flex;
+                justify-content: center;
+                gap: 30px 5px;
+                margin-bottom: 30px;
+                margin-top: 35px;
+                @media #{$lg}{
+                    gap: 20px 5px;
+                }
+            }
+            .nav-link{
+                background: var(--rs-white);
+                font-weight: 500;
+                padding-bottom: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                position: relative;
+                border-radius: 0px;
+                border-bottom: 2px solid var(--rs-white);
+                color: var(--rs-text-primary);
+                font-size: 17px;
+                transition: all 0.3s ease-in-out;
+                padding: 15px 35px;
+                @media #{$laptop}{
+                    padding: 15px 25px;
+                    font-size: 15px;
+                }
+                @media #{$lg}{
+                    padding: 15px 15px;
+                }
+                &.active{
+                    color: var(--rs-theme-blue);
+                    border-color: var(--rs-theme-blue);
+                    .rs-faculty-tab-icon{
+                        svg{
+                            path{
+                                fill: var(--rs-theme-blue);
+                            }
+                        }
+                    }
+                }
+                &:hover{
+                    color: var(--rs-theme-blue);
+                    border-color: var(--rs-theme-blue);
+                    .rs-faculty-tab-icon{
+                        svg{
+                            path{
+                                fill: var(--rs-theme-blue);
+                                transition: all 0.3s ease-in-out;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .rs-scholarships-tab-content-wrapper {
+            @media #{$sm}{
+                display: none;
+            }
+        }
+        .rs-scholarships-tab-icon{
+            svg{
+                width: 30px;
+                height: 30px;
+                path{
+                    fill: var(--rs-white);
+                }
+            }
+        }
+        .rs-scholarships-tab-anim {
+            .tab-pane.active {
+                .rs-scholarships-item-wrapper {
+                    -webkit-animation: slide-down 5s ease-out;
+                    animation: slide-down 5s ease-out;
+                }
+            }
+        }
+        .rs-scholarships-accordion{
+            display: none;
+            margin-top: 30px;
+            @media #{$sm}{
+                display: block;
+            }
+        }
+        .rs-accordion-one {
+            .rs-accordion-item{
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-inline-start: 20px;
+                padding-inline-end: 20px;
+                &:not(:last-child){
+                    margin-bottom: 10px;
+                }
+            }
+            .accordion-button{
+                gap: 10px;
+                padding-inline-end: 0;
+                justify-content: center;
+                @media #{$sm}{
+                    font-size: 18px;
+                }
+                &:not(.collapsed){
+                    color: var(--rs-theme-blue);
+                    .rs-scholarships-accordion-icon{
+                        svg{
+                            path{
+                                fill: var(--rs-theme-blue);
+                            }
+                        }
+                    }
+                }
+            }
+            .accordion-body{
+                padding: 0;
+                margin-top: 30px;
+            }
+            .rs-scholarships-content{
+                padding-inline: 0;
+                padding-top: 20px;
+                padding-bottom: 0;
+            }
+            .rs-scholarships-thumb{
+                img{
+                    border-radius: 12px;
+                }
+            }
+            .rs-scholarships-icon{
+                top: 10px;
+                inset-inline-start: 10px;
+                width: 60px;
+                height: 60px;
+                svg{
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+    &-three{
+        .rs-scholarships-wrapper{
+            background: var(--rs-white);
+            padding-top: 35px;
+            padding-bottom: 30px;
+            padding-inline: 40px;
+            border-radius: 12px;
+            @media #{$laptop}{
+                padding-inline: 30px;
+            }
+            @media #{$mobile}{
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-inline: 20px;
+            }
+        }
+        .rs-scholarships-item-wrapper{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 30px;
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-scholarships-title{
+            font-size: 16px;
+            color: var(--rs-theme-blue);
+            margin-bottom: 8px;
+        }
+        .rs-scholarships-list{
+            position: relative;
+            padding-inline-start: 12px;
+            &:not(:last-child){
+                margin-bottom: 5px;
+            }
+            &::before{
+                position: absolute;
+                content: "";
+                width: 5px;
+                height: 5px;
+                background: #4C4C4C;
+                border-radius: 50%;
+                top: 12px;
+                inset-inline-start: 0;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

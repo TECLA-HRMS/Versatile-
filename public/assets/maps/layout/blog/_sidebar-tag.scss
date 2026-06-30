@@ -1,0 +1,46 @@
+@use "../../utils" as *;
+
+/*----------------------------------------*/
+/*  3.2.4 Sidebar css
+/*----------------------------------------*/
+.tagcloud  {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    &.has-bg-transparent{
+        background: transparent;
+        border: 1px solid var(--rs-border-secondary);
+        border-radius: 8px;
+        padding: 30px;
+        a{
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--rs-white);
+            background: var(--rs-bg-primary);
+        }
+    }
+    &.has-bg-white{
+        a{
+            background: var(--rs-white);
+        }
+    }
+    a {
+        font-size: 16px;
+        border: 1px solid var(--rs-border-primary);
+        padding: 7px 15px;
+        position: relative;
+        transition: .3s;
+        font-weight: 500;
+        background: var(--rs-white);
+        border-radius: 6px;
+        color: var(--rs-title-primary);
+        @media #{$mobile}{
+            font-size: 14px;
+            padding: 6px 13px;
+        }
+        &:hover {
+            color: var(--rs-white);
+            background-color: var(--rs-theme-blue);
+            border-color: var(--rs-theme-blue);
+        }
+    }
+}

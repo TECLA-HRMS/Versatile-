@@ -1,0 +1,110 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*   4.21 funfact css
+/*----------------------------------------*/
+
+.rs-funfact{
+    &-one{
+        .rs-funfact-wrapper{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            @media #{$md}{
+                grid-template-columns: repeat(2,1fr);
+            }
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-funfact-icon{
+            svg{
+                width: 64px;
+                height: 64px;
+            }
+        }
+        .rs-funfact-title {
+	        margin-bottom: 10px;
+        }
+        .rs-funfact-item{
+            background: var(--rs-white);
+            box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.04);
+            display: inline-flex;
+            align-items: start;
+            gap: 20px 20px;
+            border-radius: 12px;
+            padding-top: 30px;
+            padding-inline: 25px;
+            padding-bottom: 30px;
+            @media #{$laptop}{
+                padding-inline: 20px;
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+            @media #{$lg}{
+                flex-wrap: wrap;
+            }
+            &.has-theme-red{
+                background: var(--rs-theme-red);
+                .rs-funfact-title {
+                    color: var(--rs-white);
+                }
+                .rs-funfact-icon{
+                    svg{
+                        path{
+                            fill: var(--rs-white);
+                        }
+                    }
+                }
+                .rs-funfact-desc{
+                    color: var(--rs-white);
+                }
+            }
+        }
+        &.has-theme-blue{
+            @media #{$md}{
+                padding-top: 80px;
+            }
+            .rs-funfact-wrapper{
+                margin-top: -80px;
+                position: relative;
+                z-index: 2;
+                @media #{$md}{
+                    margin-top: 0;
+                }
+            }
+            .rs-funfact-item{
+                background: var(--rs-theme-blue-two);
+                &:nth-child(2n){
+                    background: var(--rs-theme-yellow);
+                    .rs-funfact-title{
+                        color: var(--rs-title-primary);
+                    }
+                    .rs-funfact-desc {
+                        color: var(--rs-text-primary);
+                    }
+                    .rs-funfact-icon{
+                        svg{
+                            path{
+                                fill: var(--rs-black);
+                            }
+                        }
+                    }
+                }
+            }
+            .rs-funfact-icon{
+                svg{
+                    path{
+                        fill: var(--rs-white);
+                    }
+                }
+            }
+            .rs-funfact-title{
+                color: var(--rs-white);
+            }
+            .rs-funfact-desc {
+	            color: rgba(255,255,255,.7);
+            }
+        }
+    }
+}

@@ -1,0 +1,133 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.5.1 Header Style 1
+/*----------------------------------------*/
+
+.rs-header{
+    &-one{
+        overflow-x: clip;
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 99;
+            justify-content: space-between;
+            padding-inline-start: 150px;
+            padding-inline-end: 150px;
+            @media #{$laptop}{
+                padding-inline-start: 15px;
+                padding-inline-end: 15px;
+                padding-top: 13px;
+                padding-bottom: 13px;
+            }
+        }
+        .header-logo{
+            position: relative;
+            z-index: 1;
+        }
+        .header-left{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0 30px;
+        }
+        .header-menu{
+            display: flex;
+            align-items: center;
+        }
+        .header-btn{
+            @media #{$xs}{
+                display: none;
+            }
+        }
+        .rs-sticky-header{
+            &.active{
+                background: var(--rs-theme-blue);
+                padding-top: 0;
+                @media #{$lg}{
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+                .main-menu{
+                    >ul{
+                        >li{
+                            >a{
+                                padding: 30px 0px;
+                            }
+                        }
+                    }
+                }
+                &.has-bg{
+                    background: var(--rs-theme-blue-two);
+                }
+            }
+        }
+        &.has-bg-white{
+            .header-wrapper{
+                background: var(--rs-white);
+            }
+            .header-search-icon{
+                border-color: var(--rs-border-primary) ;
+                i{
+                    color: var(--rs-theme-secondary);
+                }
+                &:hover{
+                    .has-search{
+                        color: var(--rs-theme-primary);
+                    }
+                }
+            }
+            .sidebar-toggle{
+                background: transparent;
+                border-color: var(--rs-border-primary);
+                .header-bar-icon{
+                    span{
+                        background: var(--rs-theme-secondary);
+                    }
+                }
+            }
+        }
+        &.has-space{
+            .main-menu {
+                > ul{
+                    > li{
+                        > a{
+                            padding: 50px 0px;
+                        }
+                    }
+                }
+            }
+        }
+        &.has-space-two{
+            .header-wrapper{
+                margin-top: 30px;
+                margin-inline-start: 150px;
+                margin-inline-end: 150px;
+                padding-inline-start: 30px;
+                padding-inline-end: 30px;
+                border-radius: 12px;
+                background: #001936;
+                @media #{$laptop}{
+                    margin-top: 20px;
+                    margin-inline-start: 15px;
+                    margin-inline-end: 15px;
+                }
+                @media #{$mobile}{
+                    padding-inline-start: 20px;
+                    padding-inline-end: 20px;
+                }
+            }
+            .main-menu {
+                > ul{
+                   >li {
+                       > a{
+                            padding: 28px 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

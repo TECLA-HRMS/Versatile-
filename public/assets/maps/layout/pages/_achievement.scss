@@ -1,0 +1,94 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.2 achievement css
+/*----------------------------------------*/
+
+.rs-achievement{
+    &-one{
+        .rs-achievement-wrapper{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 30px;
+            @media #{$sm}{
+                grid-template-columns: repeat(1,1fr);
+            }
+        }
+        .rs-achievement-content{
+            ul{
+                li{
+                    list-style: none;
+                    position: relative;
+                    padding-inline-start: 10px;
+                    &:not(:last-child){
+                        margin-bottom: 5px;
+                    }
+                    &::before{
+                        position: absolute;
+                        content: "";
+                        width: 5px;
+                        height: 5px;
+                        background: #4C4C4C;
+                        border-radius: 50%;
+                        top: 10px;
+                        inset-inline-start: 0;
+                    }
+                }
+            }
+        }
+        .rs-achievement-inner{
+            position: relative;
+            padding-inline-start: 40px;
+            @media #{$md}{
+                padding-inline-start: 30px;
+            }
+            &::before{
+                position: absolute;
+                content: "";
+                inset-inline-start: 0px;
+                top: 0px;
+                width: 16px;
+                height: 16px;
+                background-color: var(--rs-theme-blue);
+                border: 3px solid rgba(255, 255, 255, 0.98);
+                border-radius: 50%;
+                z-index: 2;
+                box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.3);
+            }
+            &::after{
+                position: absolute;
+                content: "";
+                inset-inline-start: 7px;
+                top: 0;
+                bottom: 0;
+                width: 1px;
+                height: 100%;
+                background-color: var(--rs-border-primary);
+            }
+        }
+        .rs-achievement-title{
+            background: var(--rs-theme-blue); 
+            padding-top: 23px;
+            padding-bottom: 20px;
+            padding-inline-start: 25px;
+            padding-inline-end: 25px;
+            border-radius: 6px 6px 0 0;
+            color: var(--rs-white);
+        }
+        .rs-achievement-content{
+            color: var(--rs-text-primary);
+            padding-top: 20px;
+            padding-inline-start: 30px;
+            padding-inline-end: 30px;
+            padding-bottom: 30px;
+            background: var(--rs-white);
+            border-radius: 0 0 6px 6px;
+            position: relative;
+            @media #{$md}{
+                padding-inline-start: 20px;
+                padding-inline-end: 20px;
+                padding-bottom: 20px;
+            }
+        }
+    }
+}

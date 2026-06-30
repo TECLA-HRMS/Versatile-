@@ -1,0 +1,304 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.5.2 Header Style 2
+/*----------------------------------------*/
+
+.rs-header {
+    &-two {
+        overflow-x: clip;
+
+        .header-wrapper {
+            align-items: center;
+            position: relative;
+            z-index: 99;
+            justify-content: space-between;
+            display: flex;
+            padding-inline-start: 150px;
+            padding-inline-end: 150px;
+
+            @media #{$laptop} {
+                padding-inline-start: 15px;
+                padding-inline-end: 15px;
+            }
+
+            @media #{$lg} {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+        .header-logo {
+            position: relative;
+            z-index: 1;
+            .logo-white {
+                @media #{$sm} {
+                    display: none;
+                }
+            }
+            .logo-red {
+                display: none;
+
+                @media #{$sm} {
+                    display: block;
+                }
+            }
+        }
+        .header-logo-wrapper {
+            margin-top: -50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            width: 237px;
+            @media #{$md} {
+                margin-top: -100px;
+                width: 200px;
+            }
+            &::before {
+                position: absolute;
+                content: "";
+                width: 237px;
+                height: 205px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #730017;
+                clip-path: polygon(0 0, 100% 0%, 100% 80%, 50% 100%, 0 80%);
+                top: 0;
+                left: 0;
+                @media #{$lg} {
+                    height: 165px;
+                    top: -15px;
+                }
+                @media #{$md} {
+                    height: 205px;
+                    width: 200px;
+                }
+            }
+            &::after {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                top: 5px;
+                left: 0;
+                clip-path: polygon(0px 0px, 100% 0%, 100% -5px, 50% 17%, 0 -5%);
+                background: var(--rs-theme-red);
+                @media #{$lg} {
+                    top: -10px;
+                }
+            }
+            @media #{$sm} {
+                margin-top: 0;
+                width: unset;
+                &::before,
+                &::after {
+                    content: none;
+                }
+            }
+        }
+        &.has-theme-green-two {
+            .header-logo-wrapper {
+                margin-top: -45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                z-index: 1;
+                padding: 17px 70px 17px 70px;
+                background: #00843C;
+                margin-inline: 30px;
+                @media #{$lg} {
+                    padding: 15px 15px 15px 15px;
+                    width: 150px;
+                }
+                @media #{$md} {
+                    margin: 0px;
+                    padding: 0;
+                    background: transparent;
+                }
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 32px;
+                    height: 44px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #007937;
+                    top: 0;
+                    inset-inline-end: -30px;
+                    inset-inline-start: auto;
+                    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+                }
+                &::after {
+                    position: absolute;
+                    content: "";
+                    width: 32px;
+                    height: 44px;
+                    top: 0px;
+                    inset-inline-start: -30px;
+                    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+                    background: #007937;
+                }
+                @media #{$md} {
+
+                    &::before,
+                    &::after {
+                        content: none;
+                    }
+                }
+            }
+            .header-wrapper {
+                @media #{$lg} {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+                @media #{$md}{
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+            }
+            .header-logo {
+                width: 100px;
+                @media #{$lg} {
+                    width: 80px;
+                }
+                @media #{$md} {
+                    width: 170px;
+                }
+                @media #{$xs} {
+                    width: 140px;
+                }
+            }
+            .header-logo {
+                position: relative;
+                z-index: 1;
+                .logo-white {
+                    @media #{$md} {
+                        display: none;
+                    }
+                }
+                .logo-green {
+                    display: none;
+                    @media #{$md} {
+                        display: block;
+                    }
+                }
+            }
+            .header-left {
+                @media #{$lg} {
+                    display: none;
+                }
+            }
+            .has-extra-menu {
+                display: none;
+
+                @media #{$lg} {
+                    display: block;
+                }
+            }
+            .rs-sticky-header {
+                &.active {
+                    .header-logo-wrapper {
+                        margin-top: 0;
+                        width: unset;
+                        background: transparent;
+                        padding: 0;
+                        margin-inline: 0;
+
+                        &::before,
+                        &::after {
+                            content: none;
+                        }
+                    }
+                    &.header-wrapper {
+                        @media #{$lg} {
+                            padding-top: 10px;
+                            padding-bottom: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .header-left {
+            display: flex;
+            gap: 30px;
+        }
+        .header-menu {
+            display: flex;
+            align-items: center;
+        }
+        .header-btn {
+            @media #{$xl} {
+                display: none;
+            }
+            @media #{$lg} {
+                display: block;
+            }
+            @media #{$xs} {
+                display: none;
+            }
+        }
+        .main-menu {
+            ul {
+                li {
+                    a {
+                        color: var(--rs-title-primary);
+                    }
+                }
+            }
+        }
+        .header-logo {
+            width: 90px;
+            margin-top: auto;
+
+            @media #{$lg} {
+                width: 80px;
+            }
+
+            @media #{$sm} {
+                width: 140px;
+            }
+        }
+        .header-icon-wrapper {
+            &::before {
+                background: rgba(0, 0, 0, 0.14);
+            }
+        }
+        .header-search-icon {
+            i {
+                color: var(--rs-black);
+            }
+        }
+        .header-bar-icon {
+            span {
+                background: var(--rs-black);
+            }
+        }
+        .rs-sticky-header {
+            &.active {
+                .header-logo-wrapper {
+                    margin-top: 0;
+                    width: unset;
+                    &::before,
+                    &::after {
+                        content: none;
+                    }
+                }
+                .header-logo {
+                    width: unset;
+                    margin-top: unset;
+
+                    @media #{$xs} {
+                        width: 140px;
+                    }
+                }
+                .header-left {
+                    gap: 30px 60px;
+                }
+            }
+        }
+    }
+}

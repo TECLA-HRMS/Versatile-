@@ -1,0 +1,37 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.7 Color Short Code
+/*----------------------------------------*/
+
+.rs-text-primary {
+    color: var(--rs-primary);
+}
+
+.rs-white{
+    color: var(--rs-white);
+}
+
+.rs-black{
+    color: var(--rs-black);
+}
+
+.rs-light-purple{
+    color: var(--rs-theme-purple-light);
+}
+
+.rs-red{
+    color: var(--rs-red);
+}
+
+.rating-color {
+	color: #FFB21D;
+}
+
+.text-blue{
+    color: var(--rs-title-tertiary);
+}
+
+.text-yellow{
+    color: var(--rs-theme-yellow);
+}

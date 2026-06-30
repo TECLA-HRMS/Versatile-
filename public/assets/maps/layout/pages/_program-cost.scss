@@ -1,0 +1,30 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.32 program cost
+/*----------------------------------------*/
+
+.rs-program-cost{
+    &-wrapper{
+        display: grid;
+        grid-template-columns: auto 575px;
+        gap: 30px 60px;
+        @media #{$lg}{
+            grid-template-columns: auto 450px;
+            gap: 30px 30px;
+        }
+        @media #{$md}{
+            grid-template-columns: auto;
+        }
+    }
+    &-thumb{
+        img{
+            width: 100%;
+            border-radius: 8px;
+        }
+    }
+    &-title{
+        color: var(--rs-title-tertiary);
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,50 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.14 error
+/*----------------------------------------*/
+
+.error-wrapper{
+    position: relative;
+    .section-title{
+        font-size: 50px;
+        @media #{$xl}{
+            font-size: 45px;
+        }
+        @media #{$lg}{
+            font-size: 40px;
+        }
+        @media #{$sm}{
+            font-size: 35px;
+        }
+        @media #{$xs}{
+            font-size: 30px;
+        }
+        @media #{$mobile}{
+            font-size: 25px;
+        }
+    }
+}
+.error-title{
+    font-size: 500px;
+    line-height: .8;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media #{$laptop}{
+        font-size: 400px;
+    }
+    @media #{$lg}{
+        font-size: 300px;
+    }
+    @media #{$md}{
+        font-size: 200px;
+    }
+    @media #{$sm}{
+        font-size: 150px;
+    }
+}

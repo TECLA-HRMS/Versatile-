@@ -1,0 +1,112 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.11 curriculum css
+/*----------------------------------------*/
+
+.rs-program-details-curriculum-item {
+	margin-top: 30px;
+}
+
+.rs-curriculum-table {
+    &-one {
+        .rs-curriculum-table-inner {
+            background-color: var(--rs-white);
+            border: 1px solid var(--rs-border-primary);
+            width: max-content;
+            min-width: 100%;
+            thead {
+                background-color: var(--rs-theme-blue);
+                color: var(--rs-white);
+            }
+            th {
+                padding: 15px 24px;
+                font-weight: 600;
+                font-size: 15px;
+                font-family: var(--rs-ff-title);
+                border-inline-end: 1px solid var(--rs-border-tertiary);
+
+                @media #{$lg} {
+                    padding: 15px 15px;
+                }
+                &:first-child {
+                    width: 80%;
+                    @media #{$xs} {
+                        width: 50%;
+                    }
+                }
+            }
+            td {
+                padding: 15px 24px;
+                vertical-align: middle;
+                border: 1px solid var(--rs-border-primary);
+                font-size: 15px;
+
+                @media #{$lg} {
+                    padding: 15px 15px;
+                }
+
+                a {
+                    &:hover {
+                        color: var(--rs-theme-blue);
+                    }
+                }
+            }
+        }
+    }
+    &-two {
+        .rs-curriculum-table-inner {
+            background-color: var(--rs-white);
+            border-collapse: collapse;
+            border-inline-start: 1px solid var(--rs-border-primary);
+            border-inline-end: 1px solid var(--rs-border-primary);
+            border-bottom: 1px solid var(--rs-border-primary);
+            text-align: left;
+            width: max-content;
+            min-width: 100%;
+            thead {
+                background-color: var(--rs-theme-blue);
+                color: var(--rs-white);
+                th {
+                    padding: 16px 24px;
+                    font-weight: 700;
+                    font-size: 14px;
+                    border-inline-end: 1px solid var(--rs-border-tertiary);
+
+                    &:last-child {
+                        border-inline-end: none;
+                    }
+                    @media #{$lg} {
+                        padding: 15px 15px;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    border-top: 1px solid var(--rs-border-primary);
+                }
+                td {
+                    padding: 14px 24px;
+                    vertical-align: middle;
+                    font-size: 15px;
+                    border-right: 1px solid var(--rs-border-primary);
+                    &:first-child{
+                        width: 25%;
+                        @media #{$laptop}{
+                            width: 20%;
+                        }
+                        @media #{$xs}{
+                            width: 15%;
+                        }
+                    }
+                    &:last-child {
+                        border-inline-end: none;
+                    }
+                    @media #{$lg} {
+                        padding: 15px 15px;
+                    }
+                }
+            }
+        }
+    }
+}

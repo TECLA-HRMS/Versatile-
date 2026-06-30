@@ -1,0 +1,64 @@
+@use "../utils" as *;
+
+/*----------------------------------------*/
+/*  2.13 list
+/*----------------------------------------*/
+
+.rs-list-item{
+    ul{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px 30px;
+        @media #{$mobile}{
+            grid-template-columns: repeat(1,1fr);
+        }
+        li{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--rs-title-primary);
+            svg{
+                width: 20px;
+                height: 20px;
+                path{
+                    fill: var(--rs-theme-primary);
+                }
+            }
+            i{
+                border: 2px solid var(--rs-theme-blue);
+                color: var(--rs-theme-blue);
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    &.is-list-block{
+        ul{
+            display: block;
+            li{
+                &:not(:last-child){
+                    margin-bottom: 13px;
+                }
+            }
+        }
+    }
+    &.is-large{
+        ul{
+            li{
+                svg{
+                    width: 22px;
+                    height: 22px;
+                    path{
+                        fill: var(--rs-primary);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,120 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.4.2 Copyright Style
+/*----------------------------------------*/
+
+
+.rs-copyright {
+    &-one {
+        position: relative;
+        margin-top: 100px;
+        @media #{$md}{
+            margin-top: 75px;
+        }
+        @media #{$sm}{
+            margin-top: 55px;
+        }
+        .rs-footer-copyright-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 22px;
+            padding-bottom: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.082);
+            @media #{$lg}{
+                justify-content: center;
+            }
+        }
+        .rs-footer-copyright {
+            a {
+                color: var(--rs-theme-yellow);
+                &:hover {
+                    color: var(--rs-theme-yellow);
+                }
+            }
+            p {
+                color: var(--rs-white);
+                text-align: center;
+            }
+            &.has-theme-red{
+                a{
+                    color: var(--rs-theme-red);
+                        &:hover {
+                            color: var(--rs-theme-red);
+                        }
+                }
+            }
+            &.has-theme-red{
+                a{
+                    color: var(--rs-theme-red);
+                        &:hover {
+                            color: var(--rs-theme-red);
+                        }
+                }
+            }
+            &.has-theme-green-two{
+                a{
+                    color: var(--rs-theme-green-two);
+                        &:hover {
+                            color: var(--rs-theme-green-two);
+                        }
+                }
+            }
+            &.has-theme-cyan{
+                a{
+                    color: var(--rs-theme-light-cyan);
+                        &:hover {
+                            color: var(--rs-theme-light-cyan);
+                        }
+                }
+            }
+        }
+        .rs-footer-copyright-link{
+            a{
+                font-size: 16px;
+                color: var(--rs-white);
+                &:hover{
+                    color: var(--rs-theme-yellow);
+                }
+            }
+            &.has-theme-red{
+                a{
+                    &:hover{
+                        color: var(--rs-theme-red);
+                    }
+                }
+            }
+            &.has-theme-yellow{
+                a{
+                    &:hover{
+                        color: var(--rs-theme-yellow);
+                    }
+                }
+            }
+            &.has-theme-green-two{
+                a{
+                    &:hover{
+                        color: var(--rs-theme-green-two);
+                    }
+                }
+            }
+            &.has-theme-cyan{
+                a{
+                    &:hover{
+                        color: var(--rs-theme-light-cyan);
+                    }
+                }
+            }
+        }
+        .rs-footer-copyright-left {
+            display: flex;
+            align-items: center;
+            gap:10px 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+}

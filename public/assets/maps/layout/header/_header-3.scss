@@ -1,0 +1,107 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.5.3 Header Style 3
+/*----------------------------------------*/
+
+.rs-header{
+    &-three{
+        overflow-x: clip;
+        .header-wrapper {
+            align-items: center;
+            position: relative;
+            z-index: 99;
+            justify-content: space-between;
+            display: flex;
+            padding-inline-start: 150px;
+            padding-inline-end: 150px;
+            @media #{$laptop}{
+                padding-inline-start: 15px;
+                padding-inline-end: 15px;
+            }
+            @media #{$lg}{
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            &.has-space{
+                padding-inline-start: 120px;
+                padding-inline-end: 120px;
+                @media #{$laptop}{
+                    padding-inline-start: 15px;
+                    padding-inline-end: 15px;
+                }
+            }
+        }
+        .header-logo{
+            position: relative;
+            z-index: 1;
+        }
+        .header-left{
+            display: flex;
+            gap: 30px;
+        }
+        .header-menu{
+            display: flex;
+            align-items: center;
+        }
+        .header-btn{
+            @media #{$xl}{
+                display: none;
+            }
+            @media #{$lg}{
+                display: block;
+            }
+            @media #{$xs}{
+                display: none;
+            }
+        }
+        .main-menu {
+            >ul {
+                >li {
+                   > a{
+                        color: var(--rs-title-primary);
+                    }
+                }
+            }
+        }
+        .header-icon-wrapper{
+            &::before{
+                background: rgba(0, 0, 0, 0.14);
+            }
+        }
+        .header-search-icon{
+            i{
+                color: var(--rs-black);
+            }
+        }
+        .header-bar-icon{
+            span{
+                background: var(--rs-black);
+            }
+        }
+        &.has-space{
+            .main-menu{
+                > ul{
+                    >li{
+                        > a{
+                            padding: 33px 0px;
+                        }
+                    }
+                }
+            }
+            .rs-sticky-header {
+                &.active{
+                    .main-menu{
+                        > ul{
+                            >li{
+                                > a{
+                                    padding: 30px 0px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

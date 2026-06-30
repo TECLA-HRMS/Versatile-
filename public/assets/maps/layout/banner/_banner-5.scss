@@ -1,0 +1,194 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  3.1.5 banner style 5
+/*----------------------------------------*/
+
+
+.rs-banner {
+    &-five {
+        position: relative;
+        z-index: 1;
+        overflow-x: clip;
+
+        &:hover {
+            .rs-banner-navigation {
+                visibility: visible;
+                opacity: 1;
+                inset-inline-end: 30px;
+            }
+        }
+        .rs-banner-bg-thumb,
+        .rs-banner-bg-thumb-two {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .rs-banner-wrapper {
+            position: relative;
+            z-index: 1;
+            padding-top: 100px;
+            padding-inline-start: 135px;
+            padding-inline-end: 85px;
+            display: grid;
+            grid-template-columns: auto 864px;
+            align-items: end;
+            gap: 30px 200px;
+
+            @media #{$desktop} {
+                gap: 30px 30px;
+                grid-template-columns: auto 750px;
+            }
+
+            @media #{$laptop} {
+                padding-inline-start: 0px;
+                padding-inline-end: 0px;
+                grid-template-columns: auto 600px;
+            }
+
+            @media #{$lg} {
+                grid-template-columns: auto 500px;
+            }
+
+            @media #{$md} {
+                grid-template-columns: auto;
+                padding-top: 80px;
+            }
+        }
+
+        .rs-banner-btn {
+            margin-top: 45px;
+        }
+
+        .rs-banner-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--rs-white);
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+
+            @media #{$mobile} {
+                font-size: 16px;
+                gap: 15px;
+            }
+
+            img {
+                width: 33px;
+            }
+        }
+
+        .rs-banner-title {
+            color: var(--rs-white);
+            line-height: 1.125;
+
+            @media #{$lg} {
+                font-size: 45px;
+            }
+
+            @media #{$sm} {
+                font-size: 40px;
+            }
+        }
+
+        .rs-banner-content-wrapper {
+            position: relative;
+            z-index: 2;
+            padding-bottom: 130px;
+
+            @media #{$md} {
+                padding-bottom: 0;
+            }
+        }
+
+        .rs-banner-thumb {
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .rs-banner-navigation {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            position: absolute;
+            z-index: 2;
+            inset-inline-end: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s;
+            @media #{$sm} {
+                display: none;
+            }
+        }
+        .rs-pagination {
+            &.swiper-pagination {
+                position: absolute;
+                bottom: 40px;
+            }
+            .swiper-pagination-bullet{
+                &.swiper-pagination-bullet-active {
+                    background: var(--rs-theme-green);
+                    &::before {
+                        border-color: var(--rs-theme-green);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// slider animation
+.rs-banner-five {
+    .swiper-slide-active {
+
+        .rs-banner-subtitle,
+        .rs-banner-title,
+        .rs-banner-btn {
+            animation-fill-mode: both;
+            animation-name: fadeInUp;
+        }
+    }
+
+    .swiper-slide-active {
+        .rs-banner-subtitle {
+            animation-delay: .3s;
+            animation-duration: 0.7s;
+        }
+
+        .rs-banner-title {
+            animation-delay: .5s;
+            animation-duration: 0.9s;
+        }
+
+        .rs-banner-btn {
+            animation-delay: .9s;
+            animation-duration: 1.1s;
+        }
+    }
+}
+
+.rs-banner-five {
+    .swiper-slide-active {
+        .rs-banner-thumb {
+            animation-fill-mode: both;
+            animation-name: fadeInRight;
+        }
+    }
+
+    .swiper-slide-active {
+        & .rs-banner-thumb {
+            animation-delay: 1.1s;
+            animation-duration: 1.3s;
+        }
+    }
+}
