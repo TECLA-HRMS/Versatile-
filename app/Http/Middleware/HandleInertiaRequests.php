@@ -38,7 +38,7 @@ class HandleInertiaRequests extends Middleware
         $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
 
         // Ensure logos resolve correctly in subfolder deployments
-        $imageKeys = ['header_logo', 'sidebar_logo', 'favicon'];
+        $imageKeys = ['header_logo', 'sidebar_logo', 'favicon', 'footer_logo', 'sidebar_collapsed_logo'];
         foreach ($imageKeys as $imgKey) {
             if (!empty($settings[$imgKey]) && str_starts_with($settings[$imgKey], '/storage/')) {
                 // asset() expects paths without leading slashes to append to the base APP_URL properly
