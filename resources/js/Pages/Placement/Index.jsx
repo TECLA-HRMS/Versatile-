@@ -83,6 +83,15 @@ export default function Index() {
                     background: #fafbfc;
                     position: relative;
                     overflow: hidden;
+                    padding-top: 120px;
+                    padding-bottom: 80px;
+                }
+                @media (max-width: 991px) {
+                    .plc-hero {
+                        min-height: auto;
+                        padding-top: 160px;
+                        padding-bottom: 60px;
+                    }
                 }
                 .plc-hero-mesh {
                     position: absolute;
@@ -257,6 +266,13 @@ export default function Index() {
                     border-radius: 50%;
                     background: rgba(255,255,255,0.02);
                 }
+                
+                @media (min-width: 992px) {
+                    .plc-sticky-col {
+                        position: sticky;
+                        top: 100px;
+                    }
+                }
             `}</style>
 
             {/* ===== HERO ===== */}
@@ -392,15 +408,16 @@ export default function Index() {
             {/* ===== PROCESS ACCORDION ===== */}
             <section style={{ padding: '100px 0', background: '#fff' }}>
                 <div className="container">
-                    <div className="row align-items-start">
-                        <div className="col-lg-5 mb-5 mb-lg-0" style={{ position: 'sticky', top: '100px' }}>
-                            <span style={{ fontSize: '13px', fontWeight: '700', color: '#fdc72f', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '12px', display: 'block' }}>5-Step Framework</span>
-                            <h2 style={{ fontSize: '38px', fontWeight: '800', color: '#0f2744', marginBottom: '20px', lineHeight: '1.15', letterSpacing: '-0.5px' }}>
-                                Our Proven<br />Placement Process
-                            </h2>
-                            <p style={{ fontSize: '16px', color: '#64748b', lineHeight: '1.7', marginBottom: '32px' }}>
-                                Every step is designed to maximize your employability and connect you with the right opportunities.
-                            </p>
+                    <div className="row">
+                        <div className="col-lg-5 mb-5 mb-lg-0">
+                            <div className="plc-sticky-col">
+                                <span style={{ fontSize: '13px', fontWeight: '700', color: '#fdc72f', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '12px', display: 'block' }}>5-Step Framework</span>
+                                <h2 style={{ fontSize: '38px', fontWeight: '800', color: '#0f2744', marginBottom: '20px', lineHeight: '1.15', letterSpacing: '-0.5px' }}>
+                                    Our Proven<br />Placement Process
+                                </h2>
+                                <p style={{ fontSize: '16px', color: '#64748b', lineHeight: '1.7', marginBottom: '32px' }}>
+                                    Every step is designed to maximize your employability and connect you with the right opportunities.
+                                </p>
                             <div style={{ background: '#f8fafc', borderRadius: '20px', padding: '28px', border: '1px solid #eef1f6' }}>
                                 <div className="d-flex align-items-center gap-3 mb-3">
                                     <BookOpen size={20} color="#1a365d" />
@@ -412,6 +429,7 @@ export default function Index() {
                                     <li>Live industry projects</li>
                                     <li>On-campus drives</li>
                                 </ul>
+                            </div>
                             </div>
                         </div>
                         <div className="col-lg-6 offset-lg-1">
