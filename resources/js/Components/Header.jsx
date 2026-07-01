@@ -29,7 +29,10 @@ const HeaderContent = ({ onMenuClick, menuId = "mobile-menu" }) => {
                                 {sharedPrograms && sharedPrograms.length > 0 ? (
                                     sharedPrograms.map((program) => (
                                         <li key={program.id} className={program.courses && program.courses.length > 0 ? 'menu-item-has-children' : ''}>
-                                            <Link href={route('program.index')}>{program.name}</Link>
+                                            <Link href={route('program.index')} className="d-flex justify-content-between align-items-center">
+                                                <span>{program.name}</span>
+                                                {program.courses && program.courses.length > 0 && <i className="ri-arrow-right-s-line"></i>}
+                                            </Link>
                                             {program.courses && program.courses.length > 0 && (
                                                 <ul className="submenu">
                                                     {program.courses.map((course) => (

@@ -229,7 +229,7 @@ export default function Index({ programs }) {
                                                                     <div className="rs-program-item shadow-sm">
                                                                         <div className="rs-program-content">
                                                                             <h5 className="rs-program-title">
-                                                                                <Link href={`/program/${program.slug}/${course.slug}`}>
+                                                                                <Link href={assets(`program/${program.slug}/${course.slug}`)}>
                                                                                     {course.name}
                                                                                 </Link>
                                                                             </h5>
@@ -240,7 +240,7 @@ export default function Index({ programs }) {
                                                                                 {course.description || course.short_desc}
                                                                             </p>
                                                                             <div className="rs-program-btn mt-3">
-                                                                                <Link className="rs-btn has-icon has-text is-text-blue" href={`/program/${program.slug}/${course.slug}`}>
+                                                                                <Link className="rs-btn has-icon has-text is-text-blue" href={assets(`program/${program.slug}/${course.slug}`)}>
                                                                                     <span className="btn-text-wrap">
                                                                                         <span className="text-default">Read More</span>
                                                                                         <span className="text-hover">Read More</span>

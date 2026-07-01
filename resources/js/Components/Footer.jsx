@@ -71,75 +71,85 @@ export default function Footer() {
                     @media (max-width: 768px) {
                         .footer-container {
                             grid-template-columns: 1fr;
-                            gap: 30px;
-                            padding: 40px 20px 20px;
-                            text-align: left;
+                            gap: 15px;
+                            padding: 40px 24px 20px;
+                        }
+                        .footer-col {
+                            border-bottom: 1px solid rgba(255,255,255,0.06);
+                            padding-bottom: 20px;
+                        }
+                        .footer-col:last-child {
+                            border-bottom: none;
+                            padding-bottom: 0;
                         }
                         .footer-logo {
-                            margin: 0 0 20px 0 !important;
+                            margin: 0 auto 20px auto !important;
+                            display: block;
                         }
                         .footer-tagline {
-                            margin: 0 0 25px 0 !important;
+                            text-align: center;
+                            margin: 0 auto 25px auto !important;
                         }
                         .footer-social-row {
-                            justify-content: flex-start;
+                            justify-content: center;
                         }
                         .footer-col-title {
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
                             margin-bottom: 0 !important;
-                            padding-bottom: 10px !important;
+                            padding: 16px 20px !important;
+                            background: rgba(255,255,255,0.03);
+                            border-radius: 12px;
                             cursor: pointer;
+                            font-size: 16px;
                         }
                         .footer-col-title::after {
-                            left: 0 !important;
-                            transform: none;
+                            display: none;
                         }
                         .footer-col-title i {
-                            transition: transform 0.3s ease;
-                            font-size: 20px;
-                        }
-                        .footer-col-title.active i {
-                            transform: rotate(180deg);
+                            display: none !important;
                         }
                         
-                        /* Accordion logic for mobile */
+                        /* Always show content on mobile */
                         .mobile-accordion-content {
-                            max-height: 0;
-                            overflow: hidden;
-                            transition: max-height 0.4s ease, margin-top 0.4s ease;
-                            margin-top: 0;
-                        }
-                        .mobile-accordion-content.active {
-                            max-height: 600px;
-                            margin-top: 20px;
+                            opacity: 1;
+                            padding: 0 10px 10px 10px;
+                            margin-top: 15px;
+                            max-height: none;
+                            overflow: visible;
                         }
 
                         .footer-link-item {
-                            justify-content: flex-start;
+                            padding: 8px 0;
                         }
                         .footer-contact-item {
                             flex-direction: row;
                             align-items: flex-start !important;
                             text-align: left;
                             gap: 16px !important;
-                            background: transparent !important;
-                            padding: 0 !important;
+                            background: rgba(255,255,255,0.03) !important;
+                            padding: 16px !important;
+                            border-radius: 12px;
+                            margin-bottom: 12px;
                         }
                         .footer-contact-icon {
-                            margin-bottom: 5px;
+                            margin-bottom: 0;
+                            width: 36px;
+                            height: 36px;
+                            flex-shrink: 0;
                         }
                         .footer-bottom-container {
                             flex-direction: column;
                             justify-content: center !important;
                             text-align: center;
-                            gap: 15px !important;
+                            gap: 20px !important;
+                            padding-top: 20px;
                         }
                         .footer-bottom-links {
                             justify-content: center;
                             flex-wrap: wrap;
-                            gap: 15px !important;
+                            gap: 20px !important;
                         }
                     }
 
@@ -466,8 +476,14 @@ export default function Footer() {
 
                     {/* Col 4 — Contact */}
                     <div className="footer-col">
-                        <div className="footer-col-title">Contact Us</div>
-                        <div>
+                        <div 
+                            className={`footer-col-title ${openSection === 'contact' ? 'active' : ''}`}
+                            onClick={() => toggleSection('contact')}
+                        >
+                            Contact Us
+                            <i className="ri-arrow-down-s-line"></i>
+                        </div>
+                        <div className={`mobile-accordion-content ${openSection === 'contact' ? 'active' : ''}`}>
                             {settings?.address && (
                                 <div className="footer-contact-item">
                                     <div className="footer-contact-icon">

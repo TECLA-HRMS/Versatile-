@@ -435,7 +435,7 @@ export default function Index({ banners, courses = [] }) {
                                             ))}
 
                                             {/* See More Button */}
-                                            <div className="col-12 text-center mt-5">
+                                            <div className="col-12 text-center mt-5 pt-5">
                                                 <Link href={assets('program')} className="rs-btn has-icon has-theme-yellow hover-blue">
                                                     <span className="btn-text-wrap">
                                                         <span className="text-default" style={{ fontWeight: 600 }}>See More Programs</span>
@@ -1636,13 +1636,13 @@ export default function Index({ banners, courses = [] }) {
                             <div className="row align-items-end g-5">
                                 <div className="col-xl-6 col-lg-6">
                                     <div className="rs-contact-sec-wrapper">
-                                        <div className="section-title-wrapper">
+                                        <div className="section-title-wrapper pt-5 mt-3">
                                             <span className="section-subtitle has-dark-grey is-uppercase">
                                                 Apply Today Now
                                             </span>
-                                            <h2 className="section-title-two rs-split-text-enable split-in-left mb-15">Admissions
-                                                open now
-                                            </h2>
+                                            <h1 className=" mb-15" style={{ color: '#021E40' }}>
+                                                Admissions open now
+                                            </h1>
                                             <p className="rs-section-desc">Start your academic journey with a university committed to
                                                 excellence, innovation, and student success.</p>
                                         </div>

@@ -134,14 +134,43 @@ export default function Index() {
                                 </h5>
                             </div>
                             <p className="section-desc desc-two">Over the years, our institution has built a reputation for academic excellence, strong industry connections, and successful student outcomes.</p>
-                            <div className="rs-about-thumb-wrapper">
-                                <div className="rs-about-thumb">
-                                    <img src={assets('assets/images/about/about-thumb-19.webp')} alt="image"  loading="lazy" />
+                            <div style={{ margin: '36px 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                                <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+                                    <img
+                                        src={assets('assets/images/about/about-thumb-19.webp')}
+                                        alt="Campus Life"
+                                        loading="lazy"
+                                        style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
+                                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                    />
+                                    <div style={{
+                                        position: 'absolute', bottom: 0, left: 0, right: 0,
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)',
+                                        padding: '28px 22px 18px',
+                                        borderRadius: '0 0 12px 12px',
+                                    }}>
+                                        <span style={{ color: '#fff', fontSize: '15px', fontWeight: '600', letterSpacing: '0.3px' }}>Campus Life</span>
+                                    </div>
                                 </div>
-                                <div className="rs-about-thumb">
-                                    <img src={assets('assets/images/about/about-thumb-20.webp')} alt="image"  loading="lazy" />
+                                <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+                                    <img
+                                        src={assets('assets/images/about/about-thumb-20.webp')}
+                                        alt="Academic Excellence"
+                                        loading="lazy"
+                                        style={{ width: '100%', height: '340px', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                                        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
+                                        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                                    />
+                                    <div style={{
+                                        position: 'absolute', bottom: 0, left: 0, right: 0,
+                                        background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)',
+                                        padding: '28px 22px 18px',
+                                        borderRadius: '0 0 12px 12px',
+                                    }}>
+                                        <span style={{ color: '#fff', fontSize: '15px', fontWeight: '600', letterSpacing: '0.3px' }}>Academic Excellence</span>
+                                    </div>
                                 </div>
-                               
                             </div>
                             <div className="rs-counter-wrapper rs-counter-two">
                                 <div className="rs-counter-bg-thumb include-bg" style={{backgroundImage: `url(${assets('assets/images/bg/counter-bg-thumb-01.webp')})`}}>

@@ -77,14 +77,14 @@ export default function Index() {
 
                 /* ===== HERO ===== */
                 .plc-hero {
-                    min-height: 100vh;
+                    min-height: 75vh;
                     display: flex;
                     align-items: center;
                     background: #fafbfc;
                     position: relative;
                     overflow: hidden;
-                    padding-top: 120px;
-                    padding-bottom: 80px;
+                    padding-top: 100px;
+                    padding-bottom: 60px;
                 }
                 @media (max-width: 991px) {
                     .plc-hero {
@@ -312,7 +312,7 @@ export default function Index() {
                         </div>
                         <div className="col-lg-6">
                             <div className={isVisible ? 'anim-fade' : ''} style={{ animationDelay: '0.3s', position: 'relative' }}>
-                                <div style={{ background: '#1a365d', borderRadius: '28px', padding: '20px', position: 'relative' }}>
+                                <div style={{ background: '#1a365d', borderRadius: '28px', padding: '16px', position: 'relative', maxWidth: '450px', margin: '0 auto' }}>
                                     <img src={assets('assets/images/contact/placement.webp')} alt="Placements"
                                         style={{ borderRadius: '18px', width: '100%', display: 'block' }} />
                                     {/* Overlay card */}
@@ -377,11 +377,6 @@ export default function Index() {
                             <h2 style={{ fontSize: '38px', fontWeight: '800', color: '#0f2744', lineHeight: '1.15', letterSpacing: '-0.5px', margin: 0 }}>
                                 Holistic Career<br />Preparation
                             </h2>
-                        </div>
-                        <div className="col-lg-5 offset-lg-1 mt-3 mt-lg-0">
-                            <p style={{ fontSize: '16px', color: '#64748b', lineHeight: '1.7', margin: 0 }}>
-                                Our comprehensive training curriculum ensures you are corporate-ready and confident for any selection process.
-                            </p>
                         </div>
                     </div>
 
